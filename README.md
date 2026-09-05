@@ -8,8 +8,6 @@ No es una guía de estilo para leer una vez. Es una skill que Claude carga autom
 
 ## Instalación
 
-Necesitas acceso de lectura al repo (pídeselo a Orlando si no lo tienes) y `git` configurado con tus credenciales de GitHub.
-
 El repo trae manifiestos para varias herramientas sobre **un mismo** `skills/`. El contenido no cambia; lo único distinto es el archivo que cada herramienta lee para descubrirlo.
 
 | Herramienta | Manifiesto | Estado |
@@ -60,7 +58,7 @@ git clone https://github.com/SystemOrlando/skill-brakescode.git
 
 Ese es el punto de tenerla en Markdown plano: no queda amarrada a ninguna herramienta.
 
-> **Nota sobre el repo privado.** Claude Code instala sin problema porque usa tus credenciales de `git`. Para Cursor, Kimi y Antigravity, el soporte de repositorios privados no está documentado. Si la instalación falla y ya tienes acceso de lectura, ese es casi seguro el motivo — avísale a Orlando.
+El repo es público, así que no hace falta autenticarse ni pedir acceso para instalarlo.
 
 ### Comprobar que quedó
 
@@ -68,17 +66,13 @@ Corre `/plugin` y verifica que `skill-brakescode` aparece como instalado. O simp
 
 ### Si falla la instalación
 
-Casi siempre es acceso al repo. Comprueba que puedes clonarlo:
+Comprueba primero que llegas al repo:
 
 ```bash
-gh repo view SystemOrlando/skill-brakescode
+git clone https://github.com/SystemOrlando/skill-brakescode.git
 ```
 
-Si eso da error, no eres colaborador todavía. Si funciona pero el plugin no instala, autentica el CLI:
-
-```bash
-gh auth login
-```
+Si el clon funciona pero el plugin no instala, tu herramienta probablemente todavía no soporta este formato de plugin. Usa la vía manual de más abajo — apuntar la herramienta directo al Markdown funciona en cualquier caso.
 
 ---
 
