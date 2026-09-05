@@ -1,0 +1,28 @@
+{
+  "name": "skill-brakescode",
+  "version": "1.1.0",
+  "description": "brakescode's house standard for web design and development — design criterion, measured typographic tracking ladder, color laws, motion system, signature interaction patterns, and build discipline.",
+  "keywords": [
+    "design",
+    "design-system",
+    "typography",
+    "color",
+    "motion",
+    "frontend",
+    "nextjs",
+    "tailwind",
+    "house-standard"
+  ],
+  "homepage": "https://github.com/SystemOrlando/skill-brakescode",
+  "author": {
+    "name": "brakescode",
+    "url": "https://github.com/SystemOrlando"
+  },
+  "skills": ["./skills"],
+  "interface": {
+    "displayName": "brakescode",
+    "shortDescription": "House standard for web design and development: typography, color, motion, patterns.",
+    "developerName": "brakescode",
+    "websiteURL": "https://github.com/SystemOrlando/skill-brakescode"
+  }
+}

@@ -10,7 +10,16 @@ No es una guía de estilo para leer una vez. Es una skill que Claude carga autom
 
 Necesitas acceso de lectura al repo (pídeselo a Orlando si no lo tienes) y `git` configurado con tus credenciales de GitHub.
 
-Dentro de Claude Code, corre estos dos comandos:
+El repo trae manifiestos para varias herramientas. **El contenido es exactamente el mismo** — lo único que cambia es el archivo que cada una lee para descubrirlo.
+
+| Herramienta | Manifiesto | Estado |
+|---|---|---|
+| Claude Code | `.claude-plugin/` | Verificado |
+| Cursor | `.cursor-plugin/` | Formato correcto, sin probar |
+| Kimi | `.kimi-plugin/` | Formato correcto, sin probar |
+| Otras | `.plugin/` | Genérico |
+
+### Claude Code
 
 ```
 /plugin marketplace add SystemOrlando/skill-brakescode
@@ -21,6 +30,18 @@ Dentro de Claude Code, corre estos dos comandos:
 ```
 
 Reinicia Claude Code. Listo.
+
+### Cursor, Kimi y otras
+
+Instala el plugin desde el repo con el mecanismo que use tu herramienta; leerá su propio manifiesto automáticamente.
+
+Si tu herramienta todavía no soporta plugins, **la skill funciona igual**: son archivos Markdown y nada más. Clona el repo y apunta tu herramienta a `skills/skill-brakescode/SKILL.md` como regla, contexto o instrucción de proyecto — no hay código que ejecutar, ni dependencias, ni build.
+
+```bash
+git clone https://github.com/SystemOrlando/skill-brakescode.git
+```
+
+Ese es el punto de tenerla en Markdown plano: no queda amarrada a ninguna herramienta.
 
 ### Comprobar que quedó
 
