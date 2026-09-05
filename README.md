@@ -10,13 +10,14 @@ No es una guía de estilo para leer una vez. Es una skill que Claude carga autom
 
 Necesitas acceso de lectura al repo (pídeselo a Orlando si no lo tienes) y `git` configurado con tus credenciales de GitHub.
 
-El repo trae manifiestos para varias herramientas. **El contenido es exactamente el mismo** — lo único que cambia es el archivo que cada una lee para descubrirlo.
+El repo trae manifiestos para varias herramientas sobre **un mismo** `skills/`. El contenido no cambia; lo único distinto es el archivo que cada herramienta lee para descubrirlo.
 
 | Herramienta | Manifiesto | Estado |
 |---|---|---|
-| Claude Code | `.claude-plugin/` | Verificado |
-| Cursor | `.cursor-plugin/` | Formato correcto, sin probar |
-| Kimi | `.kimi-plugin/` | Formato correcto, sin probar |
+| Claude Code | `.claude-plugin/` | Probado end-to-end |
+| Cursor | `.cursor-plugin/plugin.json` | Contrastado con la spec oficial |
+| Kimi Code | `.kimi-plugin/plugin.json` | Contrastado con la spec oficial |
+| Antigravity | `plugin.json` (raíz) | Contrastado con la spec oficial |
 | Otras | `.plugin/` | Genérico |
 
 ### Claude Code
@@ -29,19 +30,37 @@ El repo trae manifiestos para varias herramientas. **El contenido es exactamente
 /plugin install skill-brakescode@brakescode
 ```
 
-Reinicia Claude Code. Listo.
+Reinicia Claude Code.
 
-### Cursor, Kimi y otras
+### Antigravity
 
-Instala el plugin desde el repo con el mecanismo que use tu herramienta; leerá su propio manifiesto automáticamente.
+```
+agy plugin install https://github.com/SystemOrlando/skill-brakescode
+```
 
-Si tu herramienta todavía no soporta plugins, **la skill funciona igual**: son archivos Markdown y nada más. Clona el repo y apunta tu herramienta a `skills/skill-brakescode/SKILL.md` como regla, contexto o instrucción de proyecto — no hay código que ejecutar, ni dependencias, ni build.
+También puedes usarla por proyecto copiando la carpeta de la skill a `.agents/skills/` en la raíz del repo donde trabajes.
+
+### Cursor
+
+No es por comando. En el dashboard: **Plugins → Add Marketplace → Import from Repo**, y luego **Customize → Install** eligiendo scope de proyecto o de usuario.
+
+### Kimi Code
+
+```
+/plugins install https://github.com/SystemOrlando/skill-brakescode
+```
+
+### Cualquier otra
+
+Si tu herramienta no tiene sistema de plugins, **la skill funciona igual**: es Markdown y nada más. Clona y apúntala a `skills/skill-brakescode/SKILL.md` como regla, contexto o instrucción de proyecto. No hay código que ejecutar, ni dependencias, ni build.
 
 ```bash
 git clone https://github.com/SystemOrlando/skill-brakescode.git
 ```
 
 Ese es el punto de tenerla en Markdown plano: no queda amarrada a ninguna herramienta.
+
+> **Nota sobre el repo privado.** Claude Code instala sin problema porque usa tus credenciales de `git`. Para Cursor, Kimi y Antigravity, el soporte de repositorios privados no está documentado. Si la instalación falla y ya tienes acceso de lectura, ese es casi seguro el motivo — avísale a Orlando.
 
 ### Comprobar que quedó
 
