@@ -1,0 +1,29 @@
+{
+  "name": "brakescode",
+  "owner": {
+    "name": "brakescode"
+  },
+  "plugins": [
+    {
+      "name": "skill-brakescode",
+      "source": "./",
+      "description": "brakescode's house standard for web design and development",
+      "version": "1.0.0",
+      "author": {
+        "name": "brakescode",
+        "url": "https://github.com/SystemOrlando"
+      },
+      "keywords": [
+        "design",
+        "design-system",
+        "typography",
+        "color",
+        "motion",
+        "frontend",
+        "nextjs",
+        "tailwind",
+        "house-standard"
+      ]
+    }
+  ]
+}
