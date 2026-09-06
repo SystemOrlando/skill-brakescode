@@ -10,6 +10,8 @@ Depth, 3D and ambitious motion. `motion.md` governs timing and the single signat
 - [CSS 3D](#css-3d)
 - [Scroll-driven depth](#scroll-driven-depth)
 - [WebGL](#webgl)
+- [Worked example: the second face](#worked-example-the-second-face)
+- [The measurement trap](#the-measurement-trap)
 - [Non-negotiables for anything dimensional](#non-negotiables-for-anything-dimensional)
 - [Ambient motion](#ambient-motion)
 
@@ -108,6 +110,30 @@ Only for case 1 or 2, and treat it as a feature with a budget rather than a visu
 - **glTF, Draco-compressed**, and check the actual transferred size. A "simple" model is routinely 5–20 MB before compression.
 
 Order of magnitude for a single lit object with orbit: **~180 KB** of runtime plus the model. Say that number out loud before agreeing to it.
+
+## Worked example: the second face
+
+Built and verified, and the clearest case the standard has for CSS 3D over WebGL.
+
+A woven pallay in complementary-warp weave has a reverse that is the **exact negative** of its face: every thread that floated on top is underneath on the back. So a control that turns the cloth is not a card-flip effect — it is the one view a photograph cannot give, and the product's own material fact.
+
+Two things made it work, and both generalize:
+
+**The second face has to be true.** A flip that reveals a decorative back, a logo, or a repeat of the front is the card-flip cliché and reads as a widget. A flip that reveals real information — the reverse of the cloth, the inside of the box, the section behind the elevation — is the product. If you cannot say what is on the other side and why someone would want it, there is no other side; there is a rotation.
+
+**Verify the truth numerically, not by eye.** The face carried 23 filled cells and the reverse 26, summing to the grid's 49. That arithmetic is what proves the negative is exact rather than approximate, and it caught nothing wrong only because it was run — an inverted pattern that is subtly not the true inverse looks completely convincing in a screenshot.
+
+The whole thing is `transform-style: preserve-3d`, `rotateY(180deg)` on a toggle, and `backface-visibility: hidden`. No library, no model, nothing in the bundle.
+
+## The measurement trap
+
+**`getComputedStyle(el).transform` can report a 2D identity matrix for an element that is rendering a correct 3D rotation.** Observed in a real build: an inline `rotateY(60deg)` returned `matrix(1, 0, 0, 1, 0, 0)` while the element was visibly foreshortened on screen, with the near edge larger and the far edge receding.
+
+Several checks were spent chasing a bug that did not exist, and the fix was to take a screenshot. So:
+
+**Verify 3D by looking at it.** The CSSOM is not a reliable witness here. Read computed styles for the things they do report faithfully — `transform-style`, `perspective`, `backface-visibility`, and the ancestor chain that might be flattening the scene — and settle the rotation itself visually.
+
+This is the house rule about verifying in the browser rather than the compiler, turned on the measurement itself: an instrument that disagrees with the render is the instrument being wrong, and the render is the deliverable.
 
 ## Non-negotiables for anything dimensional
 
