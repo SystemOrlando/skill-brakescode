@@ -1,6 +1,6 @@
 ---
 name: skill-brakescode
-description: brakescode's house standard for web work — the design criterion (one idea, carried into the parts nobody designs), a measured typographic tracking ladder, warm-ground/cool-ink color law, a two-tier motion system, fifteen signature interaction patterns drawn from studied reference sites, and the Next.js build/deploy discipline. Use this whenever building, designing, redesigning, reviewing or polishing any web interface — landing page, portfolio, product UI, marketing site, dashboard — for brakescode or for Orlando, and whenever starting a new web project from scratch. Reach for it even when the request sounds purely technical ("build the hero", "add a pricing section", "make this page"), because the house standard governs how the thing looks, moves and reads, not merely that it works. Also use it when picking type, tracking, color, spacing, easing, loaders, empty states or microcopy.
+description: brakescode's house standard for web design and development, and the conductor that decides which other design skills to bring in and in what order. Carries the design criterion (one idea, carried into the parts nobody designs), a measured typographic tracking ladder, the warm-ground/cool-ink color law, a two-tier motion system, fifteen signature interaction patterns, an anti-slop pass that catches work reading as machine-made — generic alternating layouts, default framework palettes, unmodified library components, transition-all, corporate copy, and flatness from restraint that was never spent — plus the Next.js build and deploy discipline. Use this whenever building, designing, redesigning, reviewing or polishing any web interface — landing page, portfolio, product UI, marketing site, dashboard — for brakescode or for Orlando, and whenever starting a new web project from scratch. Reach for it even when the request sounds purely technical ("build the hero", "add a pricing section", "make this page"), because the house standard governs how the thing looks, moves and reads, not merely that it works. Use it too when work feels flat, generic, templated or AI-made and needs a point of view, when picking type, tracking, color, spacing, layout, easing, loaders, empty states or microcopy, and when deciding whether impeccable, animate, apple-design, framer-motion or the other design skills should be running on this task.
 ---
 
 # brakescode
@@ -20,6 +20,8 @@ Four tests apply this criterion. Run them before shipping anything.
 **The spine test.** Say the idea in one sentence. Now check: does the palette come from it? The type? The motion? The loading state? The 404? If the idea only shows up in the hero, there is no idea — there's a hero.
 
 **The loud-once test.** Count the loud moments. There should be exactly one. *Iventions* is warm beige and near-silent for two full screens, and then detonates into acid chartreuse with video playing inside the letterforms. The beige is what makes the chartreuse work. A site that is loud in five places is loud in none.
+
+**Zero is the more common failure, and the harder one to see.** A page that refuses every cliché and then commits to nothing passes every negative check and is flat. Restraint is a budget, not a virtue — so name what you spent it on. If you cannot point at one element, one moment, or one passage that is genuinely large, dense, saturated, fast, or strange, the budget is unspent and the work is thin. That failure is Tell 0 in `references/anti-slop.md`, and it is a planning failure: no amount of CSS rescues a page that committed to nothing.
 
 **The 8px test.** Find the smallest text on the page. Is its tracking set deliberately? Is its case deliberate? If the micro-label is running at browser defaults, the craft is decorative — it stopped where it got tedious. Every reference site treats sub-11px type as a designed system voice, not as leftovers.
 
@@ -62,15 +64,32 @@ Start with the criterion and the four tests — those do most of the work. Pull 
 
 | File | Read it when |
 |---|---|
+| `references/orchestration.md` | **Starting any design or build** — who plays when, and who wins conflicts |
+| `references/anti-slop.md` | **Before writing UI, and again before shipping** — the machine-made tells |
 | `references/typography.md` | Choosing faces, sizes, weights, tracking, or building the type scale |
 | `references/color.md` | Building a palette, picking grounds and inks, checking contrast |
 | `references/motion.md` | Any animation, transition, easing, loader, or scroll behavior |
 | `references/patterns.md` | You want a specific signature interaction, with implementation |
 | `references/casebook.md` | You want the exact measured evidence — fonts, hexes, timings, per site |
 
+The first two are not optional on real work. `orchestration.md` decides which other skills to bring in and in what order; `anti-slop.md` runs twice — against the plan, where the expensive failures are cheap to fix, and against the finished page.
+
 `patterns.md` is a catalog, not a menu to work through. Take one. A page that uses eight of them has failed the loud-once test.
 
-**Relationship to other design skills.** `impeccable` and the general frontend-design skills are broad craft references and remain useful for anything this standard doesn't cover — accessibility depth, form design, information architecture, dashboard layout. Where they and this standard disagree on a specific value — a color, a duration, a tracking figure, a typeface count — **this standard wins**, because these numbers were measured off work we chose deliberately. Use them together: this decides the house character; they fill in the general craft.
+## This standard conducts; it does not play every instrument
+
+brakescode decides **what kind of thing this is**. The specialist skills decide **how to build it well**. Character, palette, type, timing, the single loud moment and the anti-slop verdict belong here, because they are what make the work recognizable as ours. Craft depth — spring tuning, gesture handoff, accessibility, library APIs — belongs to whoever specializes in it.
+
+The short version of the running order, with the full table and the roster in `references/orchestration.md`:
+
+1. **Direction** — this SKILL.md's criterion, then `impeccable` for a new surface (or `redesign-existing-projects` when something must be preserved).
+2. **Anti-slop gate** — `references/anti-slop.md` against the *plan*, before any UI exists.
+3. **Visual system** — `color.md` and `typography.md` here, plus `impeccable`'s `craft-floor.md` for the mechanics this standard doesn't cover.
+4. **Components** — `pick-ui-library`, `magic-ui`, `ask-sonner`, `sileo-react-toasts`. Library components ship **modified**, never stock.
+5. **Motion** — `motion.md` sets the timing and the one-moment rule; `animate`, `animate-expo`, `apple-design`, or the `framer-motion-*` set does the building.
+6. **Review** — the four tests and the anti-slop self-check, then `impeccable`'s finish reviewer, `review-animations`, or `improve-animations`.
+
+**Who wins.** The user's instruction beats everything. A brief-pinned constraint beats the roll. On a specific *value* — a color, a duration, a tracking figure, a typeface count — **this standard wins**, because these numbers were measured off work chosen deliberately. On *technique and depth*, the specialist wins and this standard should not invent an opinion. When two skills ban and encourage the same thing, the stricter rule holds and you name the reconciliation out loud instead of silently picking a side.
 
 ## Build discipline
 
