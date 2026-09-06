@@ -7,7 +7,7 @@ Signature interactions observed across the reference sites, with implementations
 ## Contents
 
 **Structural** — [Split hero](#1-split-hero) · [Receding chrome](#2-receding-chrome) · [Density toggle](#3-density-toggle) · [Editorial data table](#4-editorial-data-table)
-**Type** — [Micro system label](#5-micro-system-label) · [Numbered index](#6-numbered-index) · [Word-split reveal](#7-word-split-reveal) · [Type as mask](#8-type-as-mask) · [Tone-on-tone wordmark](#9-tone-on-tone-wordmark)
+**Type** — [Micro system label](#5-micro-system-label) · [Numbered index](#6-numbered-index) · [Word-split reveal](#7-word-split-reveal) · [Type as mask](#8-type-as-mask) · [Tone-on-tone wordmark](#9-tone-on-tone-wordmark) · [Monumental wordmark](#9b-monumental-wordmark-cropped)
 **Signature** — [Compressed-strip unfold](#10-compressed-strip-unfold) · [Subject-derived ground](#11-subject-derived-ground) · [Identity equals mechanism](#12-identity-equals-mechanism) · [Torn frame edge](#13-torn-frame-edge)
 **Detail** — [Dual-label swap](#14-dual-label-swap) · [Suffix-split counter](#15-suffix-split-counter) · [Watermark mark](#16-the-watermark-mark)
 
@@ -268,6 +268,27 @@ Three requirements or it breaks in production: the real text must also exist as 
 Always `aria-hidden="true"`, and the brand name must appear in accessible form elsewhere on the page. Covered in `color.md` — decorative sub-3:1 is fine, informational sub-3:1 never is.
 
 ---
+
+## 9b. Monumental wordmark, cropped
+
+The tone-on-tone wordmark above is quiet. This is its loud sibling, and the difference is that the name **leaves the page**.
+
+Set the name at a size where it cannot fit — 20–40vw — in a value one or two steps off the ground, and let the frame cut it. Then place the page's real action **over it, off-centre**, so the type is a field the content sits on rather than a heading the content follows.
+
+```css
+.monumento {
+  font-size: clamp(6rem, 30vw, 22rem);
+  line-height: 0.78;
+  color: color-mix(in srgb, var(--ink) 11%, var(--ground));
+  margin-inline-start: -0.06em;   /* la primera letra sale por el borde */
+  white-space: nowrap;
+  user-select: none;
+}
+```
+
+Three things make it work rather than look like a mistake: it must be **cropped on at least one edge** (a monumental word fully contained is just big type); the thing placed on it must sit **off the word's centre**, because centring re-reads it as a heading; and it is `aria-hidden` with the name available accessibly elsewhere, per `color.md`'s tone-on-tone rule.
+
+A name parked small in an empty corner is the opposite move and the more common one. If the corner is empty, the name is not doing anything there.
 
 ## 10. Compressed-strip unfold
 

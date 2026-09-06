@@ -224,6 +224,25 @@ The margin matters as much as the size. A heading sitting 8px above its content 
 
 At 11px it is deliberately quiet, which also makes it the wrong element for instructions, errors, or anything a user must read to proceed.
 
+## The legal block
+
+Disclaimers, credits, demo markers and small print are usually set as one full-width paragraph at body size, and they look exactly like what they are: text nobody designed, filling the width because nothing stopped it.
+
+**Narrow them and shrink them.** 11px, set in one or two columns of 40–50 characters, parked in a corner rather than spanning the page. A compact, tightly-set block of small text reads as deliberate; the same words at full width read as a legal obligation someone pasted in.
+
+```css
+.legal {
+  font-size: 0.6875rem;
+  line-height: 1.65;
+  max-width: 46ch;
+  columns: 2;
+  column-gap: 2.5rem;
+  color: var(--ink-soft);
+}
+```
+
+It still has to clear 4.5:1 — small is not an excuse to fade it, and the opacity rule in `color.md` binds here as everywhere.
+
 ## Scale and rhythm
 
 **Prescribed** — not measured off the reference sites, which use bespoke per-section sizing.

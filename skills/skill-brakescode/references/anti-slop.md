@@ -87,6 +87,19 @@ What replaces it is not "a different stack." It is composition:
 
 **A 50/50 hero split is the default arrangement, not a composition.** Two equal halves give the reader no order to read in. Make one side clearly dominant — 7/5, 8/4 — or let the two overlap so they read as one object instead of two panels.
 
+**Equal columns with 1px dividers between them.** A row of four identical cells separated by hairline verticals is the single most legible "component library" signature on the web — it is what every SaaS pricing table, feature grid and dashboard panel looks like, and it announces that a component was reached for rather than a layout composed.
+
+Two fixes, and they work together:
+
+- **Delete the dividers.** Vertical 1px rules between items are corporate furniture. Let *air* separate the pieces: generous gaps do the same job and read as a catalogue instead of a table.
+- **Break the equality.** Make the first item twice the width of the others, or push alternating items down with a real offset. Objects that are actually different sizes read as objects; four identical cells read as slots.
+
+```css
+/* Catálogo, no tabla: sin separadores y con anchos desiguales. */
+.catalogo { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3.5rem 2.5rem; }
+.catalogo > *:nth-child(even) { transform: translateY(2rem); }
+```
+
 **The three-card row.** Cards are the lazy container: they exist to stop you from deciding what the relationship between items actually is. Before reaching for cards, ask what the items really are — a sequence (number them, rule them, run them as a list), a comparison (a table), a hierarchy (one large, the rest small), or a set with no order (then why is it a row of three?).
 
 **The boring hero.** Flat ground, centered `h1`, centered paragraph, two buttons with 8px radius, one filled and one outlined. Every part of that is a default.

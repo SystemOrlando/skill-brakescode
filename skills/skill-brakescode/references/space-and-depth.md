@@ -111,6 +111,16 @@ Offset by *column*, not by index, so the pattern holds when the grid reflows. An
 
 **Gaps are not square.** A grid with equal `gap-x` and `gap-y` is the framework default. Vertical separation needs to be **larger** than horizontal — roughly 1.5–2× — because items in the same row already read as a group while items in different rows need visible air to stop reading as a wall. `gap-x-6 gap-y-12` is a decision; `gap-6` is not.
 
+## Controlled misalignment
+
+Two blocks flanking a centre object, each perfectly aligned to the same top edge, produce a sandwich: symmetric, predictable, and it encases the thing in the middle instead of composing around it. The blocks are correct individually and the arrangement is a default.
+
+**Offset them vertically on purpose.** Let the right block start where the left block's second paragraph does. Let a data list sit lower than the headline it belongs to. The eye reads two related things at different heights as *placed*, and reads them at the same height as *laid out by a function*.
+
+This is small and it is the difference between competent and considered: **40–90px of deliberate vertical mismatch** between two flanking blocks, enough to be visible and not so much that the relationship breaks. It costs nothing and no auto-layout produces it.
+
+The same instinct applies to alignment edges. Two columns both flush to their outer edges make a frame; letting one go flush and the other hang inside breaks the frame and gives the composition a direction.
+
 ## The intentional void
 
 Five items in a three-column grid produce a last row of two, and the machine's answer is to center them or stretch them to fill. Both are the algorithm showing.

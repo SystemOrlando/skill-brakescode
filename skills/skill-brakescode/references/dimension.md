@@ -14,7 +14,9 @@ Depth, 3D and ambitious motion. `motion.md` governs timing and the single signat
 - [The measurement trap](#the-measurement-trap)
 - [Finishing: light](#finishing-light)
 - [Finishing: material](#finishing-material)
+- [Finishing: seating the object in the page](#finishing-seating-the-object-in-the-page)
 - [Finishing: shadow](#finishing-shadow)
+- [The dimming sequence](#the-dimming-sequence)
 - [The finishing checklist](#the-finishing-checklist)
 - [The four modes](#the-four-modes)
 - [Non-negotiables for anything dimensional](#non-negotiables-for-anything-dimensional)
@@ -204,6 +206,25 @@ The 3D rut lives at 0.1–0.2 with a clearcoat on everything, which is why gener
 
 **Scale the material to the object's real size.** A weave pattern tiled without reference to physical dimensions makes a blanket read as a doll's blanket or a stadium tarpaulin. Set the texture repeat from the object's actual measurements, and state them.
 
+## Finishing: seating the object in the page
+
+An object rendered against a flat field floats, however good its own lighting is. The scene is lit; the *page* is not, and the eye reads the discontinuity immediately.
+
+**Put a light behind it.** A soft radial gradient rising from just behind the object — one or two steps up from the ground, in the ground's own hue, never a different colour — reads as a back wall catching spill. It gives the silhouette something to sit against and it is the cheapest depth on the page:
+
+```css
+.escena {
+  background:
+    radial-gradient(70% 55% at 50% 62%, #241d17 0%, #16120e 58%, #100e0b 100%);
+}
+```
+
+Keep it subtle enough to doubt. If it reads as a vignette or a spotlight, it has become a effect; it should read as a room.
+
+**And carry the ground through.** The canvas background and the page background should be the same family, with the canvas one step deeper. A canvas that is pure black on a warm dark page is a hole cut in the page, not a window into it.
+
+Between those two — a gradient behind the object and a matched ground — plus the contact shadow below, the object stops floating. All three are needed: light behind for the silhouette, ground continuity for the frame, contact shadow for the weight.
+
 ## Finishing: shadow
 
 **The contact shadow is the one that matters.** An object without a dark, tight occlusion where it meets the ground floats, and no amount of lighting fixes it. It is also the cheapest: for a single hero object, a baked shadow plane underneath beats a real-time shadow map on every axis — cost, quality, and control.
@@ -230,6 +251,21 @@ Run it before calling a 3D element done. Each one is a difference you can see.
 8. **The environment is not the default studio HDRI.**
 9. **Material scale is tied to the object's stated real dimensions.**
 10. **The static poster frame** — the one reduced-motion and failed contexts get — looks good on its own. If it does not, the lighting is doing the work the composition should be doing.
+
+## The dimming sequence
+
+A stepped explanation beside a 3D object — I, II, III, IV — set at one weight is a list, and it competes with the object for the same attention. Every step shouts equally, so the reader gets no sense of where they are.
+
+**Dim to one.** The active step carries full ink at its own size; the rest drop to **20–30% opacity** and compact. The sequence becomes a position indicator rather than a wall of text, the object keeps the focal point, and the reader always knows which stage they are looking at.
+
+This matters most when the 3D is itself progressing through the stages — a firing, an assembly, a growth. Then the dimming is not a UI convention, it is the simulation's own clock made readable, and it belongs to the mechanism rather than to the chrome.
+
+```css
+.paso { opacity: 0.25; transition: opacity 320ms cubic-bezier(0.23, 1, 0.32, 1); }
+.paso[data-activo] { opacity: 1; }
+```
+
+Reduced motion keeps the dimming — it is state, not movement — and the transition simply stops being animated.
 
 ## The four modes
 
