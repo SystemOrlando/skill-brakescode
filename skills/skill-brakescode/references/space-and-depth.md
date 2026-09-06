@@ -74,6 +74,31 @@ The section number is the one most often left far too small. A landing page whos
 
 **On a project with a rhythm token** (a baseline grid, a ledger rule, a musical scale), every value above becomes a multiple of that token instead of a free number. The hierarchy stays; the units change.
 
+## Editorial padding inside a color field
+
+Space *inside* a filled block is not the same problem as space between blocks, and it is the one most often left at a framework default.
+
+Text sitting close to the edges of a color field reads as a `div` that happens to have a background. The same text with generous interior space reads as a printed plate — a poster, a label, a card someone had made. Nothing changes but the padding.
+
+**Give a color field 40–56px of vertical padding**, and make it noticeably more than the horizontal. A field padded `24px` all round is a UI component; the same field at `48px` top and bottom with `28px` sides is an object. The asymmetry matters: equal padding on all four sides is the default nobody chose, and vertical breathing room is what the eye reads as care.
+
+```css
+.field { padding: 3rem 1.75rem; }   /* 48 / 28 — not p-6 */
+```
+
+This costs height, which is exactly the trade. If the set gets too tall, the answer is fewer or smaller items, never tighter padding — because the padding is what makes them read as objects at all.
+
+## Stagger with a real offset
+
+Offsetting a column by 8 or 12px is not a stagger, it is a rounding error, and it reads as a misalignment bug rather than as rhythm. If you are going to break the row, break it: **48–80px** so the eye reads two deliberate registers rather than one row that failed to line up.
+
+```css
+/* La segunda columna baja de verdad. */
+.set > *:nth-child(2n) { margin-block-start: 4rem; }
+```
+
+Offset by *column*, not by index, so the pattern holds when the grid reflows. And check the single-column breakpoint: a stagger that becomes a random gap on mobile is worse than none.
+
 ## Rhythm: dense earns quiet
 
 Consistent spacing is a floor, not a goal. Once the hierarchy is right, **vary section padding deliberately** so the page has pace.

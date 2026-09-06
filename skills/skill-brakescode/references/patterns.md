@@ -9,7 +9,7 @@ Signature interactions observed across the reference sites, with implementations
 **Structural** — [Split hero](#1-split-hero) · [Receding chrome](#2-receding-chrome) · [Density toggle](#3-density-toggle) · [Editorial data table](#4-editorial-data-table)
 **Type** — [Micro system label](#5-micro-system-label) · [Numbered index](#6-numbered-index) · [Word-split reveal](#7-word-split-reveal) · [Type as mask](#8-type-as-mask) · [Tone-on-tone wordmark](#9-tone-on-tone-wordmark)
 **Signature** — [Compressed-strip unfold](#10-compressed-strip-unfold) · [Subject-derived ground](#11-subject-derived-ground) · [Identity equals mechanism](#12-identity-equals-mechanism) · [Torn frame edge](#13-torn-frame-edge)
-**Detail** — [Dual-label swap](#14-dual-label-swap) · [Suffix-split counter](#15-suffix-split-counter)
+**Detail** — [Dual-label swap](#14-dual-label-swap) · [Suffix-split counter](#15-suffix-split-counter) · [Watermark mark](#16-the-watermark-mark)
 
 ---
 
@@ -423,3 +423,38 @@ function Stat({ value, suffix, label, caption }) {
 `tabular-nums` is essential — without it the number jitters horizontally as digits change and the whole row twitches.
 
 **Write the caption.** A number with a generic label is a stat; a number with a line of real voice is the thing people quote. This is the cheapest personality in the entire catalog and almost everyone skips it.
+
+---
+
+## 16. The watermark mark
+
+A mark parked small in the top-right corner of a card is an app icon, and it reads as one no matter how good the mark is: it sits *beside* the content, decorating it, and every SaaS dashboard has the same arrangement.
+
+Take the same mark, blow it up until it fills the block, drop it to low opacity behind the text, and it stops being an icon and becomes the object's **face**. The card is now a thing with an identity rather than a container with a badge — and the mark finally reads at a size where its shape is legible.
+
+```css
+.field { position: relative; overflow: hidden; isolation: isolate; }
+
+.field__mark {
+  position: absolute;
+  z-index: -1;
+  right: -8%;
+  bottom: -14%;
+  width: 78%;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.field__body { position: relative; }   /* el texto va limpio por encima */
+```
+
+Four things decide whether this reads as craft or as noise:
+
+- **Scale.** 60–90% of the block's width. Below half it still reads as an icon that grew; the point is that it exceeds its container and gets cropped, which is what makes it feel like a printed plate rather than a placed graphic.
+- **Opacity.** 0.12–0.22 on a saturated field. Measure the text over it afterward — the watermark raises the effective ground luminance, and a body that passed at 4.7:1 on the flat field can fall under 4.5 over the light part of the mark.
+- **Crop it.** Let it run off an edge or two. A watermark fully contained inside the block is still an icon, just a big one.
+- **Blend, or don't.** `mix-blend-mode: overlay` or `soft-light` ties the mark into the field's own color instead of laying a lighter shape on top of it. It looks better and it is less predictable across fields — check every field in the set, and fall back to plain opacity where a light field washes it out.
+
+**Wrong when** the mark is intricate. This wants a bold, legible silhouette — a glyph, a symbol, a geometric motif. A detailed illustration at 16% becomes texture, not a face, and you would be better off with the texture.
+
+Pairs naturally with filled fields (`color.md`): once every item is a solid block, this is the move that gives the set the hierarchy the outlines would have provided.

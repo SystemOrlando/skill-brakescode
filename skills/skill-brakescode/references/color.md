@@ -113,18 +113,28 @@ Note what *Iventions* does: the accent isn't a button color, it's an **entire se
 
 If the accent is used on text or controls, it still has to pass contrast. Chartreuse `#E6FF7A` is a *ground* color — near-black on it reads fine; it is useless as text on white.
 
-## Filled and outlined in the same set
+## Filled or outlined: material fidelity decides
 
-A set where **every** item is a solid saturated field is heavy, and heavy in a way that flattens: with everything shouting at the same volume the set has no internal order, and the blocks start reading as software chrome rather than as objects.
+An outlined item — the page's ground inside a fine rule of the item's color — is lighter than a filled field and gives a set instant internal hierarchy. It is a good move, and it is the wrong one more often than it looks.
 
-Mix the two treatments. Give the ones that matter a filled field; give the rest the page's own ground with a **fine rule in that item's color**. The color still identifies each item, the set gains a hierarchy it did not have, and the page gets lighter without losing any commitment.
+**Ask what the color physically is before choosing.** When the color names a dense pigmented material — dyed thread, ink on a plate, glaze, paint, printed stock — a hollow outline is a lie about the material. Cochineal is not an edge; it is a saturated mass that soaked through fibre. Rendering it as a thin rule around empty ground represents the *idea* of the color while contradicting the thing itself, and the set reads as an interface with colored borders rather than as a collection of dyed objects.
+
+So:
+
+- **The color is a material** (dye, ink, pigment, glaze) → **fill.** Every item, consistently. Then find hierarchy elsewhere.
+- **The color is a code** (a status, a category, a tag, a chart series) → outlining is fine, and the mix genuinely helps.
+
+When you fill everything, the hierarchy the mix would have given you has to come from somewhere else. Three places that work better anyway:
+
+1. **Scale.** One field larger than its neighbours says more than any border treatment.
+2. **A mark inside the field** — the item's own glyph blown up as a watermark behind its text. See the watermark pattern in `patterns.md`; it turns each block into an object with a face instead of a colored rectangle.
+3. **Rhythm.** Staggering the columns so the set does not sit in rigid rows.
 
 ```css
-.item        { border: 1px solid var(--tinte); background: transparent; }
-.item--lleno { background: var(--tinte); color: var(--sobre); border-color: transparent; }
+.item { background: var(--tinte); color: var(--sobre); }
 ```
 
-Two or three filled among five or six outlined is a good starting ratio. Which ones get filled is a content decision — the newest, the one in season, the one being recommended — and it should mean something, not alternate.
+**A filled field takes editorial padding.** Text pressed toward the edges of a color block reads as a `div` that happens to have a background. Generous interior space — noticeably more vertical than horizontal, in the region of 40–56px top and bottom — is what makes it read as a printed plate. Full treatment in `space-and-depth.md`.
 
 **A filled field takes its own ink.** Never assume the page's text color survives on top of it: a light field needs dark text and a dark field needs light, and which is which is decided by measuring, not by eye. Store the ink alongside the color so the pair travels together.
 

@@ -164,6 +164,24 @@ The recipe:
 
 **Go smaller and wider than instinct says.** 10px at 0.2em tracking reads as a considered technical annotation; 13px at default tracking reads as text someone forgot to style. This is the one place on a page where making type *less* comfortable makes it *more* designed — the label is not there to be read at a glance, it is there to be found when the reader looks.
 
+### The label and its value are two different voices
+
+A micro-label sitting directly above the text it introduces is a pair, and the pair fails when both halves look the same. Two lines at the same size and weight read as one lumpy paragraph, and the label stops doing its job — which is to be scanned past on the way to the value.
+
+Separate them on **three axes at once**, not one:
+
+| | Label | Value |
+|---|---|---|
+| Size | 10–11px | 13–15px |
+| Case | uppercase | sentence case |
+| Tracking | 0.16–0.24em | normal to −0.005em |
+| Weight | 500–600 | 400 |
+| Opacity | full | 0.75–0.85 |
+
+**On a saturated field, drop the opacity axis entirely.** Reducing opacity always pushes the ink toward the field it sits on, so it costs contrast in both directions — light ink on a dark field and dark ink on a light one. Measured on five dyed fields: descriptions at 0.82 opacity landed at 3.3–4.0:1 and at 0.94 they still read 4.4:1, under the floor. On color, the separation has to come from size, case and tracking alone, and those three are enough.
+
+Counter-intuitively the **label** carries the tracking and weight while the **value** goes lighter and slightly transparent — on a neutral ground, where opacity is affordable. The label is a system voice — rigid, technical, always the same shape. The value is content, and content reads best relaxed. Reverse it and the pair looks like a heading with fine print, which is a different relationship.
+
 The range worth working in is **10–11px at 0.16–0.24em**. Below 10px it stops being legible at all; above 0.24em the words fall apart into letters. Push toward the small-and-wide end when the label is pure metadata (a source, a date, a count) and toward the larger end when it names a section the reader navigates by.
 
 Use it for: `FEATURED WORKS`, `01 / 04`, `SPORTS · BUDAPEST`, `PARTICIPANTS`, `SCROLL`.
