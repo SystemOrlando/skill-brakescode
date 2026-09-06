@@ -61,6 +61,7 @@ Load: **`references/motion.md`** for the timing and the signature-moment rule, t
 | Project uses Framer Motion | `framer-motion-react`, then the one that matches: `-gestures`, `-layout`, `-scroll`, `-variants` |
 | Gesture-driven, physical, iOS-feeling motion | **`apple-design`** |
 | You need the name of an effect you can only describe | **`animation-vocabulary`** |
+| 3D, depth, parallax, WebGL, ambient motion | **`references/dimension.md`** first, then the specialist |
 
 brakescode caps the durations and allows exactly one signature moment; the specialist decides the curve, the interruption, the handoff, and the degradation. Everything respects `prefers-reduced-motion` — no specialist overrides that.
 

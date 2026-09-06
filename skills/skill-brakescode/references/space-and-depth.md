@@ -25,6 +25,16 @@ Two consequences worth stating as rules:
 
 **Reading text does not scale with ambition.** Body copy has a correct absolute range — **15–17px** — set by how eyes work, not by how bold the page is. Pushing it to 18–20px because the design is confident is the tell. The one legitimate exception is a single short lead paragraph immediately under a hero, and even there 18px is the ceiling.
 
+**Reading text and annotation are two different registers, and collapsing them is what makes a page feel gigantic.** Body is what someone sits down and reads. Annotation is everything that explains, qualifies, captions or footnotes — and it belongs at **12–13px in a receded color**, not at body scale. Setting an explanatory aside at 16px in full ink gives it the same weight as the thing it explains, which flattens the page and eats the air.
+
+| Register | Size | Color |
+|---|---|---|
+| Reading body | 15–17px | full ink |
+| Annotation, caption, footnote, aside | 12–13px | 55–65% ink |
+| Micro-label | 10–11px caps, tracked | 60% ink |
+
+**Shrinking text is how you create negative space.** This is the counter-intuitive move and the one that fixes a page that feels zoomed: the ground did not change, but with the type smaller there is visibly more of it, and the page starts breathing. Reach for it before adding padding — it is free, and it fixes the cause rather than the symptom.
+
 **Containers do not scale with their contents' importance.** A card holding forty words does not need a 24rem column and 24px of padding because the page's display type is 112px. Size the container to the content, then let the page's scale come from the one element that earns it.
 
 ## Negative space is the luxury signal
@@ -99,6 +109,23 @@ Offsetting a column by 8 or 12px is not a stagger, it is a rounding error, and i
 
 Offset by *column*, not by index, so the pattern holds when the grid reflows. And check the single-column breakpoint: a stagger that becomes a random gap on mobile is worse than none.
 
+**Gaps are not square.** A grid with equal `gap-x` and `gap-y` is the framework default. Vertical separation needs to be **larger** than horizontal — roughly 1.5–2× — because items in the same row already read as a group while items in different rows need visible air to stop reading as a wall. `gap-x-6 gap-y-12` is a decision; `gap-6` is not.
+
+## The intentional void
+
+Five items in a three-column grid produce a last row of two, and the machine's answer is to center them or stretch them to fill. Both are the algorithm showing.
+
+**Leave the cell empty on purpose.** Put the fifth item under the first, let the final column end in ground, and the composition suddenly reads as laid out by someone rather than distributed by a function. A deliberate hole in a grid is one of the most reliable signals of human authorship, precisely because no auto-layout produces it and no engineer feels comfortable shipping it.
+
+```css
+/* La quinta pieza baja bajo la primera; la última columna queda en vacío. */
+.set > *:nth-child(5) { grid-column: 1; }
+```
+
+It has to look intentional rather than broken, which means: keep the empty cell at an **edge or corner**, never in the middle of the set; leave exactly one; and make sure the items that remain still align to real columns. A hole in the middle reads as a loading failure. A hole in the corner reads as air.
+
+The same instinct applies wherever content nearly fills a container: a page that ends its last row flush is a page that was packed. Letting it end short is what makes the grid feel like a canvas.
+
 ## Rhythm: dense earns quiet
 
 Consistent spacing is a floor, not a goal. Once the hierarchy is right, **vary section padding deliberately** so the page has pace.
@@ -158,6 +185,21 @@ Three things make a shadow read as real rather than as a CSS default:
 3. **Low opacity.** 0.05–0.08 per layer. The `rgba(0,0,0,0.1)` default is both too dark and too flat once you compare them.
 
 Pick a light direction once — almost always from above — and let every shadow on the page obey it.
+
+## When the hard shadow is earned
+
+`craft-floor.md` treats `box-shadow: 4px 4px 0` as a costume, and it is right about the general case: a zero-blur block shadow dropped onto a soft world is neobrutalist cosplay.
+
+It stops being a costume when **the world is already made of hard edges** — a pixel or thread grid, print registration, cut paper, stencil, screen-printed stock. There, a blurred shadow is the foreign object: nothing in that world has a soft penumbra, so a soft shadow contradicts the material exactly the way a hollow outline contradicts a dyed field.
+
+The test is not "is this neobrutalist" but **"does anything else on this page have a soft edge?"** If the answer is no, the hard shadow is the consistent choice and the soft one is the lapse.
+
+```css
+/* Mundo de cuadrícula y canto vivo: la sombra también tiene canto. */
+.plate { box-shadow: 4px 4px 0 0 var(--sombra); }
+```
+
+Keep the offset small (3–5px), use a color derived from the ground rather than black, and apply it consistently to every raised object in the set. One hard-shadowed element among soft ones is worse than either choice made throughout.
 
 ## Declare elevation once
 

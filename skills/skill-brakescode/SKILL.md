@@ -99,6 +99,7 @@ Start with the criterion and the four tests — those do most of the work. Pull 
 | `references/color.md` | Building a palette, picking grounds and inks, checking contrast |
 | `references/space-and-depth.md` | Spacing, rhythm, borders, shadows, elevation |
 | `references/motion.md` | Any animation, transition, easing, loader, or scroll behavior |
+| `references/dimension.md` | 3D, depth, parallax, WebGL, ambient motion |
 | `references/patterns.md` | You want a specific signature interaction, with implementation |
 | `references/casebook.md` | You want the exact measured evidence — fonts, hexes, timings, per site |
 
@@ -116,7 +117,7 @@ The short version of the running order, with the full table and the roster in `r
 2. **Anti-slop gate** — `references/anti-slop.md` against the *plan*, before any UI exists.
 3. **Visual system** — `color.md` and `typography.md` here, plus `impeccable`'s `craft-floor.md` for the mechanics this standard doesn't cover.
 4. **Components** — `pick-ui-library`, `magic-ui`, `ask-sonner`, `sileo-react-toasts`. Library components ship **modified**, never stock.
-5. **Motion** — `motion.md` sets the timing and the one-moment rule; `animate`, `animate-expo`, `apple-design`, or the `framer-motion-*` set does the building.
+5. **Motion** — `motion.md` sets the timing and the one-moment rule; `animate`, `animate-expo`, `apple-design`, or the `framer-motion-*` set does the building. For anything with a z-axis — 3D, parallax, WebGL, ambient drift — read `dimension.md` first: it decides whether the thing should exist in space at all before anyone picks a library.
 6. **Review** — the four tests and the anti-slop self-check, then `impeccable`'s finish reviewer, `review-animations`, or `improve-animations`.
 
 **Who wins.** The user's instruction beats everything. A brief-pinned constraint beats the roll. On a specific *value* — a color, a duration, a tracking figure, a typeface count — **this standard wins**, because these numbers were measured off work chosen deliberately. On *technique and depth*, the specialist wins and this standard should not invent an opinion. When two skills ban and encourage the same thing, the stricter rule holds and you name the reconciliation out loud instead of silently picking a side.

@@ -184,7 +184,24 @@ Counter-intuitively the **label** carries the tracking and weight while the **va
 
 The range worth working in is **10–11px at 0.16–0.24em**. Below 10px it stops being legible at all; above 0.24em the words fall apart into letters. Push toward the small-and-wide end when the label is pure metadata (a source, a date, a count) and toward the larger end when it names a section the reader navigates by.
 
-Use it for: `FEATURED WORKS`, `01 / 04`, `SPORTS · BUDAPEST`, `PARTICIPANTS`, `SCROLL`.
+Use it for: `01 / 04`, `SPORTS · BUDAPEST`, `PARTICIPANTS`, `SCROLL` — metadata that annotates something already on screen.
+
+**Do not use it for a section heading.** A heading is a navigation point: the reader scanning the page needs to find it, and 10px at 60% ink disappears against the content below it. A micro-label pressed into service as a section heading reads as a stray caption and leaves the section without an entrance.
+
+A section heading in this house keeps the label's *character* — uppercase, wide tracking, the system voice — but takes real presence:
+
+```css
+.section-heading {
+  font-size: 0.8125rem;        /* 13px, not 10 */
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);           /* full ink, not 60% */
+  margin-block-end: 3rem;      /* and real distance from what it introduces */
+}
+```
+
+The margin matters as much as the size. A heading sitting 8px above its content belongs to nothing; at 40–56px it reads as the thing that opens the section.
 
 **Do not fade it below 60% ink.** The temptation is strong — it's the smallest text on the page and the easiest to quiet — but 40% ink measures **2.58:1** against the house ground and fails WCAG for text outright. 60% measures 4.70:1 and clears it. If the label still feels too loud at 60%, make it smaller or track it wider; do not reach for opacity. The arithmetic is in `color.md`.
 
