@@ -29,6 +29,27 @@ Four tests apply this criterion. Run them before shipping anything.
 
 **The locked-out test.** Can a person on a slow connection, with reduced motion on, using a keyboard, get to the content? *Minh Pham's* portfolio failed this in testing — canvas plus three videos behind a blocking loader, stalled at 20% across two full attempts, and the site was never seen. Ambition that locks the user out is not ambition. It's a broken site with good taste.
 
+## The house tilt
+
+The criterion above is neutral about *where* the loud moment sits on the scale from restrained to vernacular. The house is not. This section records the calibration, and it is a stated preference rather than something derived from the casebook — worth knowing, because the casebook sites sit at the restrained end and this house sits well past them.
+
+Given two executions that both pass the criterion, **the house prefers the one that is an object over the one that is a document.**
+
+Concretely, tested head to head on the same content:
+
+| Preferred | Over |
+|---|---|
+| Color as **fields** — saturated blocks that carry structure | Color as a single ink on a ground |
+| Heavy condensed display at genuinely large scale | A refined face at a polite size |
+| Frames, edges, hard offset shadows — things with a physical border | Hairline rules and open composition |
+| Irregularity as structure — rotation, staggered heights, overlap | Everything squared to one axis |
+| **Vernacular** sources: folk printing, packaging, signage, games, market ephemera | Editorial sources: publications, studio identities, archival documents |
+| One color per item, changing the world as you move through it | One palette holding still across the page |
+
+The monochrome-and-hairlines register is not banned — it is correct for a genuinely documentary subject, and `references/casebook.md` shows it done superbly. But it is **not the default here**, and reaching for it because it is safe is how a page ends up passing every check while reading thin. When the brief leaves the register open, take the louder reading.
+
+This does not loosen anything. Contrast floors, the tracking and line-height ladders, one loud moment per page, one focal point per section, reduced motion, and the anti-slop pass all still bind. Bold and undisciplined is not the target; **bold and exact** is.
+
 ## Working principles
 
 These follow from the criterion. When a specific rule below and the criterion disagree, the criterion wins — the rules are its consequences, not its replacement.
