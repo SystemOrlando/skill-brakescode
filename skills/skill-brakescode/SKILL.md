@@ -1,6 +1,6 @@
 ---
 name: skill-brakescode
-description: brakescode's house standard for web design and development, and the conductor that decides which other design skills to bring in and in what order. Carries the design criterion (one idea, carried into the parts nobody designs), a measured typographic tracking ladder, the warm-ground/cool-ink color law, a two-tier motion system, fifteen signature interaction patterns, an anti-slop pass that catches work reading as machine-made — generic alternating layouts, default framework palettes, unmodified library components, transition-all, corporate copy, and flatness from restraint that was never spent — plus the Next.js build and deploy discipline. Use this whenever building, designing, redesigning, reviewing or polishing any web interface — landing page, portfolio, product UI, marketing site, dashboard — for brakescode or for Orlando, and whenever starting a new web project from scratch. Reach for it even when the request sounds purely technical ("build the hero", "add a pricing section", "make this page"), because the house standard governs how the thing looks, moves and reads, not merely that it works. Use it too when work feels flat, generic, templated or AI-made and needs a point of view, when picking type, tracking, color, spacing, layout, easing, loaders, empty states or microcopy, and when deciding whether impeccable, animate, apple-design, framer-motion or the other design skills should be running on this task.
+description: brakescode's house standard for web design and development, and the conductor that decides which other design skills to bring in and in what order. Carries the design criterion (one idea, carried into the parts nobody designs), a measured typographic tracking ladder, the warm-ground/cool-ink color law, a two-tier motion system, fifteen signature interaction patterns, an anti-slop pass that catches work reading as machine-made — generic alternating layouts, default framework palettes, unmodified library components, transition-all, corporate copy, and flatness from restraint that was never spent — plus the Next.js build and deploy discipline. Use this whenever building, designing, redesigning, reviewing or polishing any web interface — landing page, portfolio, product UI, marketing site, dashboard — for brakescode or for Orlando, and whenever starting a new web project from scratch. Reach for it even when the request sounds purely technical ("build the hero", "add a pricing section", "make this page"), because the house standard governs how the thing looks, moves and reads, not merely that it works. Use it too when work feels flat, generic, templated or AI-made and needs a point of view, when picking type, tracking, color, spacing, layout, easing, loaders, empty states or microcopy, and when deciding whether impeccable, animate, apple-design, framer-motion or the other design skills should be running on this task. Use it for anything with a z-axis too — 3D objects, figures, scenes, depth, parallax, WebGL, Three.js, lighting, materials and shadows — where it runs a dedicated seven-step lane that decides whether the thing should exist in space at all, picks the cheapest technique that works, and pulls in every relevant skill in order.
 ---
 
 # brakescode
@@ -52,6 +52,14 @@ This does not loosen anything. Contrast floors, the tracking and line-height lad
 
 **The tilt's own failure mode: scaling everything.** Read "heavy display at large scale" and the obvious move is to enlarge the whole page — display *and* body *and* cards *and* padding. That produces no hierarchy at all, only zoom, and a page that feels held against the reader's face. The tilt applies to **the one loud element**. Everything else gets smaller and quieter to pay for it, because hierarchy is the *ratio* between them, not the size of either. Full treatment in `references/space-and-depth.md`.
 
+## Dimension
+
+The criterion applies to the z-axis without amendment, and it is where it bites hardest: **identity equals mechanism** means a thing may occupy space only when space is what the thing *is*. A textile has a reverse. A building has a section. A stack has layers. Those earn depth. A shape that rotates because rotation looks expensive does not, and it is the single most recognizable generated move on the web.
+
+The house position, in one line: **take the cheapest rung that does the job.** Most requests for "3D" are answered by CSS 3D transforms — no library, nothing in the bundle — and the jump to WebGL costs hundreds of kilobytes, a GPU dependency and a whole class of device failures. Cross it for a real object or a real mechanism, never to make a section feel richer.
+
+When you do build in space, the finish is three things and they are all in `references/dimension.md`: **light** (one key, a deliberate key-to-fill ratio, opposite temperatures — ambient-only light removes the gradients and without gradients there is no form), **material** (metalness is binary, roughness carries the character, and most real things are rougher than 0.7), and **shadow** (the contact shadow is the one that matters, a real penumbra sharpens at the contact, and no shadow is ever black).
+
 ## Working principles
 
 These follow from the criterion. When a specific rule below and the criterion disagree, the criterion wins — the rules are its consequences, not its replacement.
@@ -86,6 +94,9 @@ These are short because they're absolute. The reasoning is in the reference file
 - **Body text hits 4.5:1.** Warmth is not an excuse for low contrast — `#111214` on `#F4F2ED` measures **16.9:1**. Softness and contrast are not in tension.
 - **Number things.** `01 / 02 / 03`, `PIECE 1`, `/08`. Sequence makes a page read as curated rather than dumped.
 - **No spinner. Ever.** If it must load, the loading state says something true about what's loading.
+- **An abstract rotating object is never the answer.** The slowly turning glassy blob over a particle field is the most legible generated page there is. Depth is earned by three cases only — the product *is* a physical object, the mechanism *is* spatial, or depth carries the hierarchy. → `references/dimension.md`
+- **One dimensional element per page**, and the static frame it degrades to must stand on its own. If the poster only works because of the lighting, the lighting is doing the composition's job.
+- **One sun.** A page's CSS shadows, its hard offsets and its 3D key light all fall the same way. Two light directions on one page is the fastest way to look assembled.
 
 ## How to use this skill
 
@@ -118,7 +129,8 @@ The short version of the running order, with the full table and the roster in `r
 3. **Visual system** — `color.md` and `typography.md` here, plus `impeccable`'s `craft-floor.md` for the mechanics this standard doesn't cover.
 4. **Components** — `pick-ui-library`, `magic-ui`, `ask-sonner`, `sileo-react-toasts`. Library components ship **modified**, never stock.
 5. **Motion** — `motion.md` sets the timing and the one-moment rule; `animate`, `animate-expo`, `apple-design`, or the `framer-motion-*` set does the building. For anything with a z-axis — 3D, parallax, WebGL, ambient drift — read `dimension.md` first: it decides whether the thing should exist in space at all before anyone picks a library.
-6. **Review** — the four tests and the anti-slop self-check, then `impeccable`'s finish reviewer, `review-animations`, or `improve-animations`.
+6. **Anything with a z-axis** — 3D objects, figures, scenes, depth, WebGL — runs the **seven-step 3D lane** in `references/orchestration.md`, which convenes `dimension.md`, `pick-ui-library`, `vercel:performance-optimizer`, `impeccable`, `animate`, `apple-design`, the `framer-motion-*` set, `emil-design-eng` and `review-animations` in order.
+7. **Review** — the four tests and the anti-slop self-check, then `impeccable`'s finish reviewer, `review-animations`, or `improve-animations`.
 
 **Who wins.** The user's instruction beats everything. A brief-pinned constraint beats the roll. On a specific *value* — a color, a duration, a tracking figure, a typeface count — **this standard wins**, because these numbers were measured off work chosen deliberately. On *technique and depth*, the specialist wins and this standard should not invent an opinion. When two skills ban and encourage the same thing, the stricter rule holds and you name the reconciliation out loud instead of silently picking a side.
 

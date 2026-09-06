@@ -65,6 +65,36 @@ Load: **`references/motion.md`** for the timing and the signature-moment rule, t
 
 brakescode caps the durations and allows exactly one signature moment; the specialist decides the curve, the interruption, the handoff, and the degradation. Everything respects `prefers-reduced-motion` — no specialist overrides that.
 
+### 5b — The 3D lane
+
+Anything with a z-axis runs its own sequence, because 3D fails in more ways than 2D and each failure has a different specialist. Run all seven steps; skipping the first is how a page ends up with a rotating blob.
+
+**1 — Should this exist in space at all?** `references/dimension.md`, the "when 3D earns its place" section. Three cases only. This step's correct output is frequently *no*, and a no here saves the other six.
+
+**2 — Which rung?** The cost ladder in the same file. Most answers land on CSS 3D transforms. Do not let a library be chosen before this step — the tool follows the need.
+
+**3 — If a library is genuinely needed**, `pick-ui-library` decides which, and **`vercel:performance-optimizer`** sizes the cost before anyone commits: bundle weight, lazy-loading boundary, the poster frame, and what happens on a mid-range phone. A WebGL decision made without a performance opinion is a decision made without its price.
+
+**4 — Composition and direction.** `impeccable` owns this exactly as it does in 2D — the object's placement, scale and role in the page are a composition problem, not a rendering one. brakescode's house tilt still applies: the object is an object, not a hologram.
+
+**5 — Motion.** `references/motion.md` for the timing, then:
+
+| The 3D moves because… | Skill |
+|---|---|
+| A control, a state change, a reveal | **`animate`** |
+| The user drags or orbits it | **`apple-design`** for the physics and the handoff, **`framer-motion-gestures`** for the implementation |
+| Scroll position drives it | **`framer-motion-scroll`**, or the CSS `animation-timeline` recipe in `dimension.md` |
+| It has orchestrated states | **`framer-motion-variants`** |
+| You can describe the effect but not name it | **`animation-vocabulary`** |
+
+Interruptibility matters more here than anywhere: a rotation the user cannot stop, reverse or grab mid-flight is a video, not an object. `apple-design` is the authority on that handoff.
+
+**6 — Finishing.** The light, material and shadow sections of `dimension.md`, then the ten-point checklist. **`emil-design-eng`** for the last layer of polish — the details that separate a correct render from a considered one.
+
+**7 — Review.** `review-animations` on the motion, `impeccable`'s finish reviewer on the surface, and this standard's four tests. The locked-out test does the heavy lifting: reduced motion gets a static frame rather than a slower spin, content never sits behind the canvas, and orbit is reachable from a keyboard.
+
+Two more, when they apply: **`full-output-enforcement`** if the scene, shader or material code must ship whole rather than as a stub, and **`dataviz`** when the thing in space is data rather than an object — a 3D chart is a charting problem first and a dimension problem second, and it is usually a 2D chart wearing a costume.
+
 ### 6 — Review
 
 Load: **`references/anti-slop.md`** again (the self-check at the end), then run this standard's **four tests** — spine, loud-once, 8px, locked-out.
@@ -99,6 +129,8 @@ Everything installed, and the one line that says when it earns loading.
 | `ask-sonner` / `sileo-react-toasts` | Toasts |
 | `prototype` | Throwaway exploration where the standard's finish rules would only slow you down |
 | `full-output-enforcement` | The output must be exhaustive and unabridged |
+| `vercel:performance-optimizer` | Sizing the cost of WebGL, heavy media, or anything that threatens the bundle |
+| `dataviz` | The thing being built is a chart — including a 3D one, which is usually a 2D chart in costume |
 | `write-swift` | Swift — out of this standard's scope entirely |
 
 ## Conflict resolution
