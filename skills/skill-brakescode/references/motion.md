@@ -176,6 +176,29 @@ reduced.addEventListener('change', (e) => e.matches && skipToEndState());
 
 Reduced motion means *reduced*, not *removed*: a cross-fade is usually fine where a slide is not. What must go is travel, parallax, scale, and anything continuous.
 
+## Time, not frames
+
+Any animation driven by a per-frame constant — `carga += 0.028`, `parpadeo -= 0.012`, a counter incremented each tick — is measured in **frames**, and frames are not a unit of time. At 60fps a 60-step ramp takes one second; in a background tab, on a throttled renderer, or on a device holding 20fps, the same ramp takes three seconds or thirty.
+
+Observed in a build: a tube's ignition ramp written as a per-frame constant read as 5% complete after four and a half seconds in a throttled pane, while looking correct at full framerate. The code was not wrong at 60fps; it was wrong everywhere else.
+
+Drive from the clock:
+
+```js
+let ultimo = performance.now();
+const frame = () => {
+  const ahora = performance.now();
+  const dt = Math.min((ahora - ultimo) / 1000, 0.05);   // el tope evita el salto tras un tab inactivo
+  ultimo = ahora;
+
+  carga += (objetivo - carga) * Math.min(1, dt * 1.9);  // ~2 s a régimen, en segundos
+};
+```
+
+Cap `dt` at 30–50ms. Without the cap, a tab that was backgrounded for a minute returns with a single enormous delta and every animation teleports to its end state — which is worse than the frame-counted version it replaced.
+
+CSS transitions and animations are already time-based, which is one more reason to prefer them (`motion.md`'s tool ladder) and to reach for JS timing only when the value genuinely cannot be expressed in CSS.
+
 ## Performance rules
 
 - **Animate `transform` and `opacity` only.** Anything else (width, height, top, margin, box-shadow) triggers layout or paint every frame.
