@@ -13,6 +13,30 @@ Two of the fastest tells that a page was generated rather than composed: spacing
 - [Light surfaces](#light-surfaces)
 - [Declare elevation once](#declare-elevation-once)
 
+## The zoom trap
+
+**The failure this catches:** the page is bold, committed, non-generic — and it feels like a screen held against your face. Nothing is wrong with any single element, yet the whole thing reads as *enlarged* rather than as *designed*.
+
+It happens when "make it bold" is applied to everything at once: the display goes to 7rem, and the body follows to 19px, and the cards grow to fill their columns, and the padding grows with them. Every element got bigger and every relationship stayed identical, so no hierarchy was created. Zoom is not scale.
+
+**Hierarchy is the ratio, not the size.** A 112px headline over 15px body is a 7.5:1 step and reads as authored. The same headline over 19px body is 5.9:1 and reads as a page someone zoomed. So when the display grows, everything else **holds still or shrinks** — that is what pays for it.
+
+Two consequences worth stating as rules:
+
+**Reading text does not scale with ambition.** Body copy has a correct absolute range — **15–17px** — set by how eyes work, not by how bold the page is. Pushing it to 18–20px because the design is confident is the tell. The one legitimate exception is a single short lead paragraph immediately under a hero, and even there 18px is the ceiling.
+
+**Containers do not scale with their contents' importance.** A card holding forty words does not need a 24rem column and 24px of padding because the page's display type is 112px. Size the container to the content, then let the page's scale come from the one element that earns it.
+
+## Negative space is the luxury signal
+
+The fastest single move from "software interface" to "gallery" is to **make the objects smaller and the ground larger.**
+
+A grid of big filled blocks that reach the container edges reads as an app, whatever the palette. The same content at roughly 70% of that size, with ground visible around and between each object, reads as a collection someone curated. Nothing about the content changed — only how much of the page it was allowed to claim.
+
+**The squint test:** cover the type and look at the ratio of ink to ground. If ink dominates, it reads as an interface no matter how good the typography is. Premium work is mostly empty, and the emptiness is the point: it is what tells the reader that each object was chosen rather than accumulated.
+
+This is the discipline that makes the house tilt work rather than shout. Saturated fields and heavy display earn their force from the quiet around them; filling the viewport with them spends the contrast that made them strong.
+
 ## White space is hierarchical
 
 **The tell:** `p-4` on every card, `p-6` on every section, `gap-4` everywhere. Mathematically consistent, visually dead. A page spaced this way has no structure — every relationship reads as equally close, so the reader gets no help deciding what belongs to what.

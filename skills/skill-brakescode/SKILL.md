@@ -50,6 +50,8 @@ The monochrome-and-hairlines register is not banned — it is correct for a genu
 
 This does not loosen anything. Contrast floors, the tracking and line-height ladders, one loud moment per page, one focal point per section, reduced motion, and the anti-slop pass all still bind. Bold and undisciplined is not the target; **bold and exact** is.
 
+**The tilt's own failure mode: scaling everything.** Read "heavy display at large scale" and the obvious move is to enlarge the whole page — display *and* body *and* cards *and* padding. That produces no hierarchy at all, only zoom, and a page that feels held against the reader's face. The tilt applies to **the one loud element**. Everything else gets smaller and quieter to pay for it, because hierarchy is the *ratio* between them, not the size of either. Full treatment in `references/space-and-depth.md`.
+
 ## Working principles
 
 These follow from the criterion. When a specific rule below and the criterion disagree, the criterion wins — the rules are its consequences, not its replacement.

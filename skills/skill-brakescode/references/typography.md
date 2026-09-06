@@ -153,13 +153,18 @@ The recipe:
 ```css
 .label {
   font-family: var(--font-mono);   /* or the grotesque */
-  font-size: 0.6875rem;            /* 11px */
+  font-size: 0.625rem;             /* 10px — smaller than feels safe */
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.2em;           /* and wider than feels safe */
   text-transform: uppercase;
+  line-height: 1;
   color: var(--ink-soft);          /* 60% ink — recedes, still legible */
 }
 ```
+
+**Go smaller and wider than instinct says.** 10px at 0.2em tracking reads as a considered technical annotation; 13px at default tracking reads as text someone forgot to style. This is the one place on a page where making type *less* comfortable makes it *more* designed — the label is not there to be read at a glance, it is there to be found when the reader looks.
+
+The range worth working in is **10–11px at 0.16–0.24em**. Below 10px it stops being legible at all; above 0.24em the words fall apart into letters. Push toward the small-and-wide end when the label is pure metadata (a source, a date, a count) and toward the larger end when it names a section the reader navigates by.
 
 Use it for: `FEATURED WORKS`, `01 / 04`, `SPORTS · BUDAPEST`, `PARTICIPANTS`, `SCROLL`.
 

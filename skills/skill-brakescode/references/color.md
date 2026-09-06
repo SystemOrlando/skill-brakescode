@@ -113,6 +113,34 @@ Note what *Iventions* does: the accent isn't a button color, it's an **entire se
 
 If the accent is used on text or controls, it still has to pass contrast. Chartreuse `#E6FF7A` is a *ground* color — near-black on it reads fine; it is useless as text on white.
 
+## Filled and outlined in the same set
+
+A set where **every** item is a solid saturated field is heavy, and heavy in a way that flattens: with everything shouting at the same volume the set has no internal order, and the blocks start reading as software chrome rather than as objects.
+
+Mix the two treatments. Give the ones that matter a filled field; give the rest the page's own ground with a **fine rule in that item's color**. The color still identifies each item, the set gains a hierarchy it did not have, and the page gets lighter without losing any commitment.
+
+```css
+.item        { border: 1px solid var(--tinte); background: transparent; }
+.item--lleno { background: var(--tinte); color: var(--sobre); border-color: transparent; }
+```
+
+Two or three filled among five or six outlined is a good starting ratio. Which ones get filled is a content decision — the newest, the one in season, the one being recommended — and it should mean something, not alternate.
+
+**A filled field takes its own ink.** Never assume the page's text color survives on top of it: a light field needs dark text and a dark field needs light, and which is which is decided by measuring, not by eye. Store the ink alongside the color so the pair travels together.
+
+```ts
+{ nombre: "Chilca", color: "#7E9A16", sobre: "#16130F" }  // campo claro, tinta oscura
+{ nombre: "Añil",   color: "#1B4B8F", sobre: "#F2EDE4" }  // campo oscuro, tinta clara
+```
+
+Check the small text too, not just the heading. Micro-labels on a saturated field are where contrast quietly fails, and a label at reduced opacity on a mid-tone field almost always lands under 4.5:1.
+
+## Texture belongs on the fields too
+
+`anti-slop.md` calls a flat ground a tell. The same is true of a flat *field*: a solid block of pure color is the "elegant dark mode" default, and it is what separates a page that looks printed from one that looks rendered.
+
+Give the fields the subject's own material at very low strength — a thread-fine line pattern for something woven, a paper tooth for something printed, a screen dot for something posted. Keep it under ~4% contrast against the field, tile a real asset rather than filtering live, and check it on both the lightest and the darkest field in the set. If you can see a pattern rather than feel a surface, it is too strong.
+
 ## Subject-derived palettes
 
 *In Pieces* changes the entire page background per species — lavender for the hornbill, cyan for the vaquita — and cross-fades it during the triangle morph. *Simply Chocolate* gives each product its own saturated ground.

@@ -52,6 +52,19 @@ What replaces it is not "a different stack." It is composition:
 .overlay > .mark { justify-self: end; transform: translate(18%, -12%); }
 ```
 
+**The grid must not be readable as a grid.** A perfectly regular set of equal boxes in equal rows is the machine's signature even when the content inside is excellent, and nudging every third item down by a fixed amount is the same regularity with an extra step. Break it for real:
+
+- **Stagger by column, not by index.** Give each column its own offset so the eye reads a rhythm rather than a repeat.
+- **Let sizes differ.** One item larger than its neighbours does more than any amount of vertical offset, and it tells the reader which one matters.
+- **Let one item leave the grid** — spanning two columns, sitting in the margin, or breaking the container edge. Once per set.
+
+```css
+.set > *:nth-child(3n + 2) { margin-block-start: 3.5rem; }
+.set > *:nth-child(3n + 3) { margin-block-start: 1.25rem; }
+```
+
+**A 50/50 hero split is the default arrangement, not a composition.** Two equal halves give the reader no order to read in. Make one side clearly dominant — 7/5, 8/4 — or let the two overlap so they read as one object instead of two panels.
+
 **The three-card row.** Cards are the lazy container: they exist to stop you from deciding what the relationship between items actually is. Before reaching for cards, ask what the items really are — a sequence (number them, rule them, run them as a list), a comparison (a table), a hierarchy (one large, the rest small), or a set with no order (then why is it a row of three?).
 
 **The boring hero.** Flat ground, centered `h1`, centered paragraph, two buttons with 8px radius, one filled and one outlined. Every part of that is a default.
@@ -133,6 +146,8 @@ Before shipping, answer these out loud. They are ordered so the most common fail
 6. **Would this copy survive on a competitor's site?**
 7. **Are all four interaction states authored?** Hover, focus-visible, active, disabled.
 8. **Is the spacing hierarchical?** Measure the largest gap and the smallest. Under ~10:1 and the page is uniformly spaced, which reads flat however correct the numbers are.
+8b. **Is it scaled or just zoomed?** Measure the display size against the body size. Under ~6:1 with a large display means everything grew together and no hierarchy was built. Body stays at 15–17px however bold the page is.
+8c. **Squint with the type covered.** More ink than ground means it reads as an interface, not a collection. Shrink the objects before touching anything else.
 9. **Does each section have one thing that wins?** If three elements compete on the same screen, the reader is given no order to read in.
 10. **Did I theme what the browser draws?** Selection, caret, focus ring, scrollbar, tabular numerals. Skipping these is the most common tell of all, because nothing looks broken when you do.
 11. **Did the scaffold pick my typeface?** Geist, Inter-as-display, or the system stack means the answer is yes.
