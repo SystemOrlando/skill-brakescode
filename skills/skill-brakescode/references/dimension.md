@@ -12,6 +12,7 @@ Depth, 3D and ambitious motion. `motion.md` governs timing and the single signat
 - [WebGL](#webgl)
 - [Worked example: the second face](#worked-example-the-second-face)
 - [The measurement trap](#the-measurement-trap)
+- [Finishing: form and edge](#finishing-form-and-edge)
 - [Finishing: light](#finishing-light)
 - [Finishing: material](#finishing-material)
 - [Finishing: seating the object in the page](#finishing-seating-the-object-in-the-page)
@@ -151,6 +152,32 @@ Several checks were spent chasing a bug that did not exist, and the fix was to t
 
 This is the house rule about verifying in the browser rather than the compiler, turned on the measurement itself: an instrument that disagrees with the render is the instrument being wrong, and the render is the deliverable.
 
+## Finishing: form and edge
+
+Before light, before material: **the silhouette is what betrays a render.** The eye reads an outline faster than it reads shading, and a form that is faceted, mathematically sharp, or perfectly uniform announces itself as computed no matter how well it is lit.
+
+**Nothing in the world has a sharp edge.** Every manufactured or grown thing carries a fillet — a moulded corner, a worn arris, a tool radius, a rolled lip. Even a razor's edge is microns of curvature. A mathematically sharp edge catches **no highlight**, and that missing thread of light along the corner is the most reliable CG tell there is.
+
+So: put a micro-bevel on every hard edge. It costs almost no geometry and it is what makes an edge *read* rather than merely exist. Where the modeller has no bevel tool — a primitive, an extrusion, a lathe — either round the profile itself or use a rounded-box / capsule primitive instead of the sharp one.
+
+**Spend segments on the silhouette, not uniformly.** A tube at 12 radial segments looks fine facing the camera and shows a polygon on its outline. The outline is the only place the count is visible, so budget there:
+
+| | Too few | Reads smooth |
+|---|---|---|
+| Radial segments on a tube or cylinder | 8–16 | **28–48** |
+| Segments along a curve's length | ≤ 64 | **200–500** |
+| Sphere / capsule width segments | ≤ 24 | **48–64** |
+
+These are cheap. A 420 × 32 tube is ~27k triangles, which is nothing for a single hero object, and doubling the radial count costs less than one texture.
+
+**Set the crease angle deliberately.** Smooth-shading across a corner that should be hard produces a melted blob; flat-shading a curve that should be continuous produces facets. Most engines expose a smoothing threshold — around **30–40°** keeps genuine corners crisp while letting curves flow. Recomputing normals without one gives you whichever of those two failures the mesh happens to trigger.
+
+**Perfectly uniform surfaces do not exist.** A single roughness value across a whole object is the material tell — real things are polished where they are handled, dull where they are not, and dirtier in their recesses. Even a faint variation reads as a real surface. This is the same argument as the roughness-map point below, from the other direction.
+
+**Fresnel is what makes an edge turn.** Every dielectric gets more reflective at grazing angles, which is why a real object brightens along its rim as the surface curves away. Physically-based materials do this for free — but only if you have not flattened it with a fully rough surface and no environment to reflect. If silhouettes look dead, that is usually the cause.
+
+**Anti-aliasing is a silhouette problem.** Aliasing on an interior gradient is invisible; on an outline against a contrasting ground it is the first thing seen. Keep MSAA on, and if the pixel ratio is capped for performance — as it should be — the silhouette is where that cap will show first, so check it there.
+
 ## Finishing: light
 
 **Nothing separates a render that looks made from one that looks generated more than the lighting**, and the generated one is always lit from everywhere. Ambient-only light — a uniform environment with no dominant source — removes every gradient across a surface, and without gradients there is no form. The object reads as a flat sticker of itself.
@@ -241,6 +268,7 @@ Between those two — a gradient behind the object and a matched ground — plus
 
 Run it before calling a 3D element done. Each one is a difference you can see.
 
+0. **No mathematically sharp edges**, and enough radial segments that the silhouette carries no facets.
 1. **One sun.** The 3D key and the page's CSS shadows fall the same way.
 2. **Key-to-fill is deliberate**, and not 1:1.
 3. **Key and fill have opposite temperatures.**

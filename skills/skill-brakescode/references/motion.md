@@ -199,6 +199,28 @@ Cap `dt` at 30–50ms. Without the cap, a tab that was backgrounded for a minute
 
 CSS transitions and animations are already time-based, which is one more reason to prefer them (`motion.md`'s tool ladder) and to reach for JS timing only when the value genuinely cannot be expressed in CSS.
 
+## Capturing a page that lazy-loads
+
+A screenshot of a page whose heavy module is dynamically imported races the bundler. In development the `import()` triggers an **on-demand compile** that can take several seconds, so the first capture after any code change reliably catches an empty container — and the capture is byte-identical every time, which makes it look like a rendering bug rather than a race.
+
+Warm the route, then capture:
+
+```bash
+# 1) calienta: compila el chunk diferido
+chrome --headless=new --screenshot=/dev/null --virtual-time-budget=15000 http://localhost:3000
+# 2) captura: ya compilado
+chrome --headless=new --screenshot=out.png --virtual-time-budget=15000 http://localhost:3000
+```
+
+**And if the page renders WebGL, do not disable the GPU.** `--disable-gpu` falls back to software rasterisation, which is fast enough for a light scene and not fast enough for a real one — so the capture times out and writes an empty frame. Diagnosed the hard way: a scene captured correctly at 420 × 20 tube segments and produced an empty image at 560 × 40, with no error and no console output. The code had not broken; the software rasteriser had simply stopped finishing a frame in time.
+
+Drop the flag for any WebGL page and let it use the real GPU. The capture that had been failing for several rounds succeeded on the first try once the flag came off.
+
+Two related traps in the same family, both of which cost real time before being recognised:
+
+- **A lazy mount gated only on `IntersectionObserver` never fires where nothing paints.** The observer needs a rendering opportunity to compute intersections, and a headless render or a never-painted tab may not give it one. Check `getBoundingClientRect()` against the viewport synchronously and mount immediately when the element is already on screen; keep the observer only for the genuinely deferred case. This is better code independently of capture.
+- **Identical file sizes across runs mean nothing rendered**, not that nothing changed. It is the fastest way to spot this failure without opening the image.
+
 ## Performance rules
 
 - **Animate `transform` and `opacity` only.** Anything else (width, height, top, margin, box-shadow) triggers layout or paint every frame.
