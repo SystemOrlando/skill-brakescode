@@ -110,13 +110,31 @@ The pairings actually in evidence:
 - **Iventions** — Söhne + ABC Arizona Mix. *Neo-grotesque + characterful serif.* The grotesque carries structure, the serif carries voice. Classic and hard to get wrong.
 - **Simply Chocolate** — a proprietary family (Simply Chocolate, Condensed, and one literally named *Ingredients*). Commissioning type is the strongest brand move available and the least available; note it as the ceiling.
 
-House defaults when nothing is specified:
+### Never these
 
-- **Grotesque:** Inter Tight, Geist, or Söhne if licensed. Avoid stock Inter at default settings — it's the visual signature of a template.
-- **Mono for labels:** Geist Mono, JetBrains Mono, Berkeley Mono.
-- **Serif for voice:** Instrument Serif (display only), Fraunces (variable, has real character), Newsreader (reads well at text sizes).
+These are not bad typefaces. They are the faces that arrive when nobody chose one, and shipping them is indistinguishable from not having made the decision.
 
-Load through `next/font` — self-hosted, no layout shift, no third-party request. All reference sites self-host.
+**Hard no, no brief earns them back:**
+
+- **Geist and Geist Mono.** The `create-next-app` default. If a page ships in Geist, the honest reading is that the scaffold picked the type.
+- **Inter** at any width or weight, as a display face. As UI text in a dense app it is defensible; as the voice of a page it is the signature of a template.
+- **The system stack** (`ui-sans-serif`, `-apple-system`, Arial, Helvetica, Segoe UI) as a display face. It is a fallback, and the closest installed font is a failure, not a shortcut.
+
+**Strong no, saturated to the point of being a category tell** — naming one needs a reason no other face could satisfy, and "the subject is bookish / technical / editorial" is never that reason: Space Grotesk, Space Mono, DM Sans, DM Serif, Plus Jakarta Sans, Outfit, Poppins, Montserrat, Playfair Display, Cormorant, Lora, Crimson, Fraunces, Instrument Sans, IBM Plex.
+
+### Choosing instead
+
+Pick the face the way you would pick an object from the subject's world, not from a list of good fonts.
+
+Ask what this thing would have been printed on before the web, and who set it. A market ledger was set in a workhorse grotesque by a jobbing printer. A lotería card was cut in heavy condensed wood type. A pharmacy label, a football programme, a legal notice, a seed catalogue — each has a real typographic tradition with a real register, and every one of them is more specific than "a clean sans."
+
+Then choose for **character at the size you will actually use it.** A face with personality at 96px often falls apart at 15px, and vice versa; that is the honest argument for two faces rather than one.
+
+Practical starting points that are not on the lists above — treat as directions, not defaults, and always check the subject first: Archivo and Archivo Narrow (workhorse grotesque with real width range), Anton and Oswald (condensed display with weight), Bricolage Grotesque (variable, idiosyncratic), Instrument Serif (display only, high contrast), Petrona and Faustina (variable serifs that read at text sizes), Libre Franklin, Public Sans, Redaction, Gambetta, Martian Mono, Courier Prime.
+
+If the project can license commercial type, that is where the real distinction lives — the reference sites run Apercu, Söhne and ABC Arizona Mix, and one commissioned its own family outright. Say so when it is worth the money.
+
+Load through `next/font` — self-hosted, no layout shift, no third-party request. All reference sites self-host. Load only the weights you actually use; six weights shipped for three used is payload nobody asked for.
 
 ## Weight discipline
 
@@ -165,15 +183,25 @@ Fluid display type, clamped so it can't collapse or run away:
 font-size: clamp(2.5rem, 1.5rem + 5vw, 10rem);
 ```
 
-Line height, inverse to size for the same optical reason as tracking:
+### Line height is inverse to size — and it is not optional
 
-| Role | Line height |
-|---|---|
-| Display ≥ 72px | 0.95–1.05 |
-| Headline 40–72px | 1.05–1.15 |
-| Subhead 24–40px | 1.2 |
-| Body | 1.5–1.65 |
-| Micro label | 1 (it's a single line) |
+The browser's default is roughly 1.2 at every size, which is wrong at both ends of the scale and most visibly wrong on display type. A 96px headline at default leading has ~19px of space between lines that reads as a gap; the lines stop being one object and the headline breaks apart. The same default at body size is too tight to read comfortably for more than a paragraph.
+
+The reason is the same as for tracking: at display sizes the eye takes in the whole shape at once and wants the lines locked together; at reading sizes it tracks line by line and needs room to find the next one.
+
+| Role | Line height | Tailwind |
+|---|---|---|
+| Display ≥ 72px | **0.88–1.0** | `leading-none` and below |
+| Headline 40–72px | 1.02–1.12 | `leading-none` / `leading-tight` |
+| Subhead 24–40px | 1.15–1.25 | `leading-tight` / `leading-snug` |
+| Lead 18–24px | 1.4 | `leading-normal` |
+| Body 14–17px | **1.5–1.65** | `leading-relaxed` |
+| Small ≤ 13px | 1.45–1.55 | `leading-normal` |
+| Micro label | 1 | `leading-none` |
+
+Below 1.0 is legitimate on all-caps display, where there are no descenders to collide. On mixed-case display, 1.0 is usually the floor before ascenders and descenders start touching — check the actual worst pair in your real copy, not a placeholder.
+
+Body under 1.5 is the more common failure and the more damaging one, because it makes long text tiring in a way readers feel without being able to name.
 
 Measure: **60–75 characters** for body. Iventions holds its body copy to roughly this and it's why a page that long stays readable.
 

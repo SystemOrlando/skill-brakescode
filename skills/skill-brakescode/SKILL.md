@@ -21,6 +21,8 @@ Four tests apply this criterion. Run them before shipping anything.
 
 **The loud-once test.** Count the loud moments. There should be exactly one. *Iventions* is warm beige and near-silent for two full screens, and then detonates into acid chartreuse with video playing inside the letterforms. The beige is what makes the chartreuse work. A site that is loud in five places is loud in none.
 
+**The same rule holds one level down: one focal point per section.** Whatever else is on screen yields to it. If the headline carries a bold treatment, the buttons and icons go flat; if the ground carries an effect, the type goes clean and solid. Competing for attention in three places at once means the reader is given no order to read in, and the section reads as busy rather than as designed. Decide what wins each screen, then actively quiet everything else — subordination is a decision you make, not a thing that happens.
+
 **Zero is the more common failure, and the harder one to see.** A page that refuses every cliché and then commits to nothing passes every negative check and is flat. Restraint is a budget, not a virtue — so name what you spent it on. If you cannot point at one element, one moment, or one passage that is genuinely large, dense, saturated, fast, or strange, the budget is unspent and the work is thin. That failure is Tell 0 in `references/anti-slop.md`, and it is a planning failure: no amount of CSS rescues a page that committed to nothing.
 
 **The 8px test.** Find the smallest text on the page. Is its tracking set deliberately? Is its case deliberate? If the micro-label is running at browser defaults, the craft is decorative — it stopped where it got tedious. Every reference site treats sub-11px type as a designed system voice, not as leftovers.
@@ -51,7 +53,11 @@ These are short because they're absolute. The reasoning is in the reference file
 
 - **Never `#FFF`, never `#000`.** Warm grounds, cool inks. Not one reference site uses pure white or pure black. → `references/color.md`
 - **Tracking is inversely proportional to size.** Large type tightens, micro type opens. Never ship default tracking on display or on labels. → `references/typography.md`
-- **Two typefaces maximum.** One is a legitimate choice; *In Pieces* runs the entire site on one family in one weight and gets its hierarchy from size and tracking alone.
+- **Two typefaces maximum**, and **never the scaffold's.** Geist, Inter as display, and the system stack are what arrive when nobody chose — shipping them is indistinguishable from not deciding. Pick the face from the subject's own typographic tradition. → `references/typography.md`
+- **Line height is inverse to size.** Display locks down to 0.88–1.0; body opens to 1.5–1.65. Browser defaults are wrong at both ends and visibly break large headlines.
+- **Space is hierarchical, never uniform.** The gap between two things is inversely proportional to how related they are, which puts roughly 20:1 between a page's largest and smallest gaps. `p-6` on everything is the absence of a decision. → `references/space-and-depth.md`
+- **Borders and shadows are derived, not picked.** On dark, the border is the text color at 0.05–0.10 opacity. On light, the shadow is tinted toward the ground's hue, layered, and offset — never `rgba(0,0,0,0.1)`. Declare elevation once: a rule, a shadow, or a background step, not two of them.
+- **Theme what the browser draws.** `::selection`, `caret-color`, `:focus-visible`, the scrollbar, and tabular numerals ship with defaults that belong to no design system. Theming them is the cheapest signal that a page was built rather than assembled, and the one most reliably skipped.
 - **One signature moment per site.** Not five.
 - **Every animation respects `prefers-reduced-motion`.** Non-negotiable, no exceptions, including the signature moment.
 - **Body text hits 4.5:1.** Warmth is not an excuse for low contrast — `#111214` on `#F4F2ED` measures **16.9:1**. Softness and contrast are not in tension.
@@ -66,8 +72,9 @@ Start with the criterion and the four tests — those do most of the work. Pull 
 |---|---|
 | `references/orchestration.md` | **Starting any design or build** — who plays when, and who wins conflicts |
 | `references/anti-slop.md` | **Before writing UI, and again before shipping** — the machine-made tells |
-| `references/typography.md` | Choosing faces, sizes, weights, tracking, or building the type scale |
+| `references/typography.md` | Choosing faces, sizes, weights, tracking, line height, or building the type scale |
 | `references/color.md` | Building a palette, picking grounds and inks, checking contrast |
+| `references/space-and-depth.md` | Spacing, rhythm, borders, shadows, elevation |
 | `references/motion.md` | Any animation, transition, easing, loader, or scroll behavior |
 | `references/patterns.md` | You want a specific signature interaction, with implementation |
 | `references/casebook.md` | You want the exact measured evidence — fonts, hexes, timings, per site |

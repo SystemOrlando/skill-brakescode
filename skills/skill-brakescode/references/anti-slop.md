@@ -132,3 +132,7 @@ Before shipping, answer these out loud. They are ordered so the most common fail
 5. **Does the first viewport show the mechanism or describe it?**
 6. **Would this copy survive on a competitor's site?**
 7. **Are all four interaction states authored?** Hover, focus-visible, active, disabled.
+8. **Is the spacing hierarchical?** Measure the largest gap and the smallest. Under ~10:1 and the page is uniformly spaced, which reads flat however correct the numbers are.
+9. **Does each section have one thing that wins?** If three elements compete on the same screen, the reader is given no order to read in.
+10. **Did I theme what the browser draws?** Selection, caret, focus ring, scrollbar, tabular numerals. Skipping these is the most common tell of all, because nothing looks broken when you do.
+11. **Did the scaffold pick my typeface?** Geist, Inter-as-display, or the system stack means the answer is yes.
