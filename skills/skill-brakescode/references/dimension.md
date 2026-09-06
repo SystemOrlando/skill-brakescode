@@ -12,6 +12,10 @@ Depth, 3D and ambitious motion. `motion.md` governs timing and the single signat
 - [WebGL](#webgl)
 - [Worked example: the second face](#worked-example-the-second-face)
 - [The measurement trap](#the-measurement-trap)
+- [Finishing: light](#finishing-light)
+- [Finishing: material](#finishing-material)
+- [Finishing: shadow](#finishing-shadow)
+- [The finishing checklist](#the-finishing-checklist)
 - [Non-negotiables for anything dimensional](#non-negotiables-for-anything-dimensional)
 - [Ambient motion](#ambient-motion)
 
@@ -134,6 +138,84 @@ Several checks were spent chasing a bug that did not exist, and the fix was to t
 **Verify 3D by looking at it.** The CSSOM is not a reliable witness here. Read computed styles for the things they do report faithfully — `transform-style`, `perspective`, `backface-visibility`, and the ancestor chain that might be flattening the scene — and settle the rotation itself visually.
 
 This is the house rule about verifying in the browser rather than the compiler, turned on the measurement itself: an instrument that disagrees with the render is the instrument being wrong, and the render is the deliverable.
+
+## Finishing: light
+
+**Nothing separates a render that looks made from one that looks generated more than the lighting**, and the generated one is always lit from everywhere. Ambient-only light — a uniform environment with no dominant source — removes every gradient across a surface, and without gradients there is no form. The object reads as a flat sticker of itself.
+
+**Decide one key light and commit to it.** Direction, height, and colour, written down. Everything else on the page then obeys the same sun: the 2D shadows in `space-and-depth.md`, the hard offsets, the highlight side of any photograph. A page whose CSS shadows fall down-right and whose 3D object is lit from the left is a page with two suns.
+
+The three-light convention, in the proportions that actually matter:
+
+| Light | Job | Relative intensity |
+|---|---|---|
+| **Key** | Makes the form. Above and 30–45° to one side. | 1.0 |
+| **Fill** | Opens the shadow so it is not black. Opposite the key, low. | 0.15–0.25 |
+| **Rim** | Separates the object from the ground. Behind, high, narrow. | 0.3–0.6, optional |
+
+**The key-to-fill ratio is the entire mood.** 8:1 is dramatic and material; 4:1 is a product shot; 1:1 is the flat generated look. Start at 5:1 and move deliberately.
+
+**Never light from below.** Millions of years of the sun being overhead means under-lighting reads as uncanny, and no brief asks for that by accident.
+
+**Give the key and the fill opposite colour temperatures.** A warm key with a cool fill (or the reverse) is what makes the shadow side read as *in shadow* rather than as *darker*. This is the same law as warm-ground/cool-ink in `color.md`, applied to photons: two neutral lights produce a grey object no matter what colour it is.
+
+```js
+key.color.set('#fff1dc');  key.intensity = 1.0;   // cálida
+fill.color.set('#cfe0ff'); fill.intensity = 0.2;  // fría, opuesta
+```
+
+**On environment maps:** in a physically-based renderer the environment *is* most of the lighting, not a backdrop. This is why every generated 3D page looks alike — the default studio HDRI, with its softbox rectangles and grey seamless, is baked into every starter. Its reflections are recognisable. Either author an environment from the subject's own world, or use a plain gradient environment and do the work with real lights.
+
+## Finishing: material
+
+Two knobs carry almost everything. The rest is detail people reach for before they have got these right.
+
+**Metalness is binary.** In reality a surface either has free electrons or it does not. Values between 0 and 1 are physically meaningless outside of transitions and layered coatings, so ship 0 or 1 and treat anything else as a mistake. Half-metal is the single most common giveaway of a material nobody authored.
+
+**Roughness carries the character**, and the useful range is narrower than it looks:
+
+| Material | Roughness |
+|---|---|
+| Polished metal, glass | 0.05–0.15 |
+| Brushed metal, glazed ceramic | 0.25–0.4 |
+| Plastic, painted wood | 0.4–0.6 |
+| Paper, unglazed clay, leather | 0.7–0.85 |
+| **Fabric, wool, felt** | 0.85–0.98 |
+
+The 3D rut lives at 0.1–0.2 with a clearcoat on everything, which is why generated objects all look like injection-moulded showroom props. **Most real things are rough.** If the subject is cloth, paper, wood, stone or skin, you are above 0.7 and the glossy default is actively wrong.
+
+**A varying roughness map beats a colour texture.** Uniform roughness is what makes a surface look like a computer surface; real materials are polished where they are handled and dull where they are not. Given one texture budget, spend it on roughness and normal maps and leave the colour flat. A flat-coloured object with authored roughness reads as real; a photo-textured object with uniform roughness reads as a decal.
+
+**Fabric needs sheen.** Cloth scatters at grazing angles in a way the standard model gets wrong — that soft halo at the silhouette edge. Most renderers expose `sheen` and `sheenRoughness`; without it, wool looks like painted plastic no matter how high the roughness is. Woven material also has *anisotropy* along the weave direction, which is what makes a textile catch light in bands as it turns.
+
+**Scale the material to the object's real size.** A weave pattern tiled without reference to physical dimensions makes a blanket read as a doll's blanket or a stadium tarpaulin. Set the texture repeat from the object's actual measurements, and state them.
+
+## Finishing: shadow
+
+**The contact shadow is the one that matters.** An object without a dark, tight occlusion where it meets the ground floats, and no amount of lighting fixes it. It is also the cheapest: for a single hero object, a baked shadow plane underneath beats a real-time shadow map on every axis — cost, quality, and control.
+
+**The penumbra is not uniform.** A real shadow is sharp where the object touches and softens with distance from the contact point, because the light source has size. A shadow that is equally blurry along its whole length is the tell that a single blur radius was applied to a silhouette. Renderers expose this as the light's `radius` / area size; use it rather than blurring the map.
+
+**Shadows are never black**, and this is the same rule as the 2D one in `space-and-depth.md`. A shadow is a region lit only by bounce, so it carries the colour of whatever is bouncing — the ground, the wall, the sky. Tint it toward the environment and lift it off zero. Pure black shadow is the absence of a decision, in three dimensions exactly as in two.
+
+**Ambient occlusion is what makes crevices read.** Without it, every recess and seam is lit as brightly as the surface around it and the object looks inflated. Bake it into the model where possible; screen-space AO is a fallback that costs frames and misses exactly the small contacts it is there for.
+
+**Shadow map resolution is a budget, not a quality setting.** One 1024 map on the key light, with the camera frustum tightened around the object, beats 2048 maps on three lights. If the shadow is soft anyway, the resolution matters far less than the tightness of the frustum.
+
+## The finishing checklist
+
+Run it before calling a 3D element done. Each one is a difference you can see.
+
+1. **One sun.** The 3D key and the page's CSS shadows fall the same way.
+2. **Key-to-fill is deliberate**, and not 1:1.
+3. **Key and fill have opposite temperatures.**
+4. **Metalness is 0 or 1.**
+5. **Roughness matches the real material** — above 0.7 for anything soft or fibrous.
+6. **There is a contact shadow**, tight and dark where the object meets the ground.
+7. **No shadow is pure black.**
+8. **The environment is not the default studio HDRI.**
+9. **Material scale is tied to the object's stated real dimensions.**
+10. **The static poster frame** — the one reduced-motion and failed contexts get — looks good on its own. If it does not, the lighting is doing the work the composition should be doing.
 
 ## Non-negotiables for anything dimensional
 
