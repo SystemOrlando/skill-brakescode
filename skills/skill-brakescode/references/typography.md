@@ -122,6 +122,23 @@ These are not bad typefaces. They are the faces that arrive when nobody chose on
 
 **Strong no, saturated to the point of being a category tell** — naming one needs a reason no other face could satisfy, and "the subject is bookish / technical / editorial" is never that reason: Space Grotesk, Space Mono, DM Sans, DM Serif, Plus Jakarta Sans, Outfit, Poppins, Montserrat, Playfair Display, Cormorant, Lora, Crimson, Fraunces, Instrument Sans, IBM Plex.
 
+### The ledger
+
+**A face used on the previous project is off the table for this one.** Keep the list and consult it before choosing, because the pull toward a face that just worked is strong and it is exactly how a house standard turns into a house template — Tell 0b in `anti-slop.md`.
+
+Faces already spent, most recent first. Add to this on every project:
+
+| Face | Project | Role |
+|---|---|---|
+| Bodoni Moda | barro (barro negro, Oaxaca) | display |
+| Public Sans | barro | text |
+| Bricolage Grotesque | pallay (Andean weaving) | display |
+| Anton | tabla (lotería) | display |
+| Archivo Narrow | hoy (daily-menu ledger) | display, micro-labels |
+| Archivo | hoy, tabla, pallay, barro | text — **overused, retire it** |
+
+That last row is the warning the ledger exists to produce: one workhorse quietly became the default across four unrelated subjects. A face that appears on everything is no longer a choice, it is a habit, and habits are what the reader recognizes as a process rather than as a design.
+
 ### Choosing instead
 
 Pick the face the way you would pick an object from the subject's world, not from a list of good fonts.

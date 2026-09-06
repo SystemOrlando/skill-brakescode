@@ -34,6 +34,28 @@ Diagnostic: **name the thing you spent the quiet on.** If you cannot point at on
 
 The fix is never to add five medium things. It is to take one thing and push it past comfort: type at a scale that feels wrong until you see it in place, a field of color that owns a whole viewport, a single element that breaks the grid it lives in, a passage of real density right against a passage of real air.
 
+## Tell 0b: the house style became a template
+
+The subtlest failure this standard produces, and it only appears from the second project onward.
+
+The laws get applied correctly. The palette obeys warm-ground/cool-ink, the tracking ladder is set, the micro-labels are at 10px, the loud moment exists. And the second project comes out with **the same skeleton as the first**: letterhead with name and location, hero split with display type on one side and the object on the other, a row of stat pairs, a list of other items on hairline rules, a CTA with big type and a paragraph, a footer with three items and a disclaimer.
+
+Different paint. Same building. Two clients, one page.
+
+This is worse than the generic-AI tells, because it passes every check in this file while producing exactly what those checks exist to prevent — work that is recognizable as *made by a process* rather than as made for a subject.
+
+**The standard is a set of laws, not a layout.** Contrast floors, tracking ladders and spacing ratios are meant to be invariant across every project. Structure, composition, palette register, typeface, section order and the shape of the page are meant to be **different every single time**, because they come from the subject and the subjects are different.
+
+Three tests, run against the last thing shipped rather than against a checklist:
+
+**The section-order diff.** Write the two pages' section order as a list. If they match, you repeated yourself. Not "look similar" — *match*.
+
+**The typeface ledger.** Keep one. A face used on the previous project is off the table for this one, however well it worked. The point of choosing from the subject's own typographic tradition is that different subjects land on different faces; landing on the same face twice means the tradition was not consulted the second time.
+
+**The skeleton test.** Strip both pages to grey boxes and put them side by side. If a stranger could not tell which is which, the second one inherited the first one's composition rather than deriving its own.
+
+The fix is never to vary the surface. It is to go back to the subject and ask what shape *this* thing wants — a kiln descends, an archive indexes, a route travels, a menu is served in order, a catalogue is browsed. Those are different pages, and the difference should be visible from across the room with the text unreadable.
+
 ## Layout tells
 
 **The alternating-section stack.** Hero with a big centered title → row of three icon cards → benefits with image-left/text-right → the same reversed → testimonials → footer. This is the single most recognizable machine layout in existence.

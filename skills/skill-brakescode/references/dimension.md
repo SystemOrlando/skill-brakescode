@@ -165,6 +165,10 @@ The three-light convention, in the proportions that actually matter:
 
 **The key-to-fill ratio is the entire mood.** 8:1 is dramatic and material; 4:1 is a product shot; 1:1 is the flat generated look. Start at 5:1 and move deliberately.
 
+**The rim carries dark subjects, and it is the light people under-power.** Observed in a build where a vessel darkened from grey clay to near-black over the course of a simulated firing: at a rim intensity that looked generous against the light material, the finished piece **disappeared entirely** against the ground — a black object on a near-black field with nothing separating them. The key and fill were correct; the object was simply gone.
+
+As a subject's albedo drops, separation stops coming from the material and has to come from the rim, so its intensity is set against the *darkest* state the subject will reach, not the state you happen to be looking at. Where the subject changes colour over time, the rim does not follow it down. Two supporting moves: keep the darkest material off pure black — real black clay, ink and pigment all retain body — and lift the bounce so the shadow side does not close.
+
 **Never light from below.** Millions of years of the sun being overhead means under-lighting reads as uncanny, and no brief asks for that by accident.
 
 **Give the key and the fill opposite colour temperatures.** A warm key with a cool fill (or the reverse) is what makes the shadow side read as *in shadow* rather than as *darker*. This is the same law as warm-ground/cool-ink in `color.md`, applied to photons: two neutral lights produce a grey object no matter what colour it is.

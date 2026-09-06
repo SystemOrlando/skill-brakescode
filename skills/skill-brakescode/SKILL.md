@@ -58,6 +58,8 @@ The criterion applies to the z-axis without amendment, and it is where it bites 
 
 The house position, in one line: **take the cheapest rung that does the job.** Most requests for "3D" are answered by CSS 3D transforms — no library, nothing in the bundle — and the jump to WebGL costs hundreds of kilobytes, a GPU dependency and a whole class of device failures. Cross it for a real object or a real mechanism, never to make a section feel richer.
 
+**When 3D ships, it ships with simulation and authored light.** Two rules, both absolute. Motion comes from a **simulation** — physics, forces, a field responding to the pointer — never from a keyframed rotation, because a timeline always returns to its start and that return is what makes a spinning object read as a loop. And the scene is **lit deliberately**: a named key with a decided direction, a fill at a stated ratio, opposite colour temperatures. Default lights plus a rotation tween is the rut in two moves. If the subject cannot justify a simulation, that is evidence the thing should not be in space at all — go back to the three cases.
+
 When you do build in space, the finish is three things and they are all in `references/dimension.md`: **light** (one key, a deliberate key-to-fill ratio, opposite temperatures — ambient-only light removes the gradients and without gradients there is no form), **material** (metalness is binary, roughness carries the character, and most real things are rougher than 0.7), and **shadow** (the contact shadow is the one that matters, a real penumbra sharpens at the contact, and no shadow is ever black).
 
 ## Working principles
@@ -94,6 +96,8 @@ These are short because they're absolute. The reasoning is in the reference file
 - **Body text hits 4.5:1.** Warmth is not an excuse for low contrast — `#111214` on `#F4F2ED` measures **16.9:1**. Softness and contrast are not in tension.
 - **Number things.** `01 / 02 / 03`, `PIECE 1`, `/08`. Sequence makes a page read as curated rather than dumped.
 - **No spinner. Ever.** If it must load, the loading state says something true about what's loading.
+- **Never ship the same skeleton twice.** The laws are invariant; the structure, the palette register, the typeface and the section order come from the subject and change every project. Diff the section order against the last thing shipped — if it matches, start again. → Tell 0b in `references/anti-slop.md`
+- **A typeface used on the previous project is off the table for this one**, however well it worked. Keep a ledger.
 - **An abstract rotating object is never the answer.** The slowly turning glassy blob over a particle field is the most legible generated page there is. Depth is earned by three cases only — the product *is* a physical object, the mechanism *is* spatial, or depth carries the hierarchy. → `references/dimension.md`
 - **One dimensional element per page**, and the static frame it degrades to must stand on its own. If the poster only works because of the lighting, the lighting is doing the composition's job.
 - **One sun.** A page's CSS shadows, its hard offsets and its 3D key light all fall the same way. Two light directions on one page is the fastest way to look assembled.
