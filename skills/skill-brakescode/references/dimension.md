@@ -16,6 +16,7 @@ Depth, 3D and ambitious motion. `motion.md` governs timing and the single signat
 - [Finishing: material](#finishing-material)
 - [Finishing: shadow](#finishing-shadow)
 - [The finishing checklist](#the-finishing-checklist)
+- [The four modes](#the-four-modes)
 - [Non-negotiables for anything dimensional](#non-negotiables-for-anything-dimensional)
 - [Ambient motion](#ambient-motion)
 
@@ -113,7 +114,16 @@ Only for case 1 or 2, and treat it as a feature with a budget rather than a visu
 - **Handle context loss.** `webglcontextlost` fires on mobile more than people expect; without a handler the section goes permanently blank.
 - **glTF, Draco-compressed**, and check the actual transferred size. A "simple" model is routinely 5–20 MB before compression.
 
-Order of magnitude for a single lit object with orbit: **~180 KB** of runtime plus the model. Say that number out loud before agreeing to it.
+**Measured**, on a build shipping one lathe-turned object with three lights, a shadow map and a procedural roughness map:
+
+| | gzip |
+|---|---|
+| The `three` chunk, deferred | **129 KB** (534 KB raw) |
+| The rest of the app | 169 KB |
+
+One chunk, loaded only when the section approaches, containing no application code. So a single lit object costs roughly **130 KB gzip plus whatever the model weighs** — and a procedurally generated form weighs nothing, which is a real argument for lathe, extrude and parametric geometry over an imported mesh whenever the form can be described rather than sculpted.
+
+Say the number out loud before agreeing to it, and check it after: `next build` plus a gzip pass over the emitted chunks takes two minutes and turns an argument into a fact.
 
 ## Worked example: the second face
 
@@ -216,6 +226,56 @@ Run it before calling a 3D element done. Each one is a difference you can see.
 8. **The environment is not the default studio HDRI.**
 9. **Material scale is tied to the object's stated real dimensions.**
 10. **The static poster frame** — the one reduced-motion and failed contexts get — looks good on its own. If it does not, the lighting is doing the work the composition should be doing.
+
+## The four modes
+
+Web 3D is not one thing. These are the four it is usually one of, and picking the mode before picking the tool is what keeps a build from drifting into the rut.
+
+**Measurement status is marked**, because two of these were read off the live site and two were not.
+
+### 1 — Physics field · *Lusion* (measured)
+
+An abstract field of objects governed by a rigid-body simulation. No timeline, no loop.
+
+| | |
+|---|---|
+| Stack | Three.js (`__THREE__` global) |
+| **Device pixel ratio** | **capped at 1**, not 2, not `devicePixelRatio` |
+| Page | `scrollHeight === innerHeight` — does not scroll |
+| Canvas | **framed in a rounded rect**, not fullbleed |
+| Type | Aeonik + IBM Plex Mono + a proprietary mono |
+
+Four principles worth taking:
+
+**Physics, not animation.** The objects respond to force. That is why it never repeats and never reads as a loop — the thing the abstract-blob rut can never do, because a timeline always returns to its start.
+
+**The pointer is a force, not a camera.** Dragging pushes objects through the field rather than orbiting the scene. Verified: a drag scattered the pile and left a visible wake. This inverts the usual relationship — the user acts *on* the world instead of moving around it, which is far more legible than orbit and needs no instruction.
+
+**Mixed roughness within one set.** Polished blacks next to matte blues and greys. Not one uniform plastic, which is the material tell.
+
+**The canvas is an object on the page, not the page's background.** A light page with a dark framed window. This is the compositional decision the rut always gets wrong: fullbleed canvas makes the 3D the environment, and then the page has no ground to be quiet against.
+
+### 2 — Optimized game · *Egg Hunt*, Merci-Michel (documented, not measured)
+
+Three.js + GSAP over a house engine, assets authored in Blender.
+
+**5.7 MB initial, 17.5 MB peak.** That is the number to hold in your head — a complete, replayable 3D game, shipped for less than many marketing pages spend on hero video. It is the standing rebuttal to "3D is heavy": 3D is heavy when nobody budgeted it.
+
+The lesson is that the budget is a design constraint from the start, not a cleanup pass. Model complexity, texture resolution, and how much loads before first interaction are decided with the concept, and a game that must start fast forces those decisions honestly.
+
+### 3 — Cinematic spatial navigation (mode, from the brief — no site verified)
+
+The camera moves through a space and that movement *is* the navigation: sections are places, transitions are travel.
+
+Strong when the subject genuinely has a geography — an archive, a building, a route, a catalogue with real adjacency. Its failure mode is severe and common: replacing a nav that worked with a flight the user cannot skip, cannot bookmark, and cannot navigate by keyboard. If it ships, every place needs a URL and a way to arrive without the journey.
+
+### 4 — Lit gallery (mode, from the brief — Cartier's homepage carries no canvas; the interactive gallery lives on campaign pages I did not locate)
+
+A single product object, lit as a photographer would light it, turnable.
+
+This is the mode where the finishing sections above are the entire job: the object is simple, so light, material and shadow carry all of it. It is also the mode with the most honest fallback — a very good static render often communicates the same thing, so the canvas has to earn itself against a poster frame rather than against nothing.
+
+*Note on Cartier: its homepage ships no canvas, no `model-viewer` and no 3D library. What it does carry is a proprietary type family — Brilliant Cut Pro, Fancy Cut Pro — which is the same brand investment `casebook.md` notes about Simply Chocolate, and arguably the more transferable lesson.*
 
 ## Non-negotiables for anything dimensional
 
