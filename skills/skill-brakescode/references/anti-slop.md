@@ -4,6 +4,7 @@ How to not ship something that reads as machine-made.
 
 ## Contents
 
+- [The commitment sheet](#the-commitment-sheet)
 - [The root cause](#the-root-cause)
 - [Tell 0: restraint without a payload](#tell-0-restraint-without-a-payload)
 - [Layout tells](#layout-tells)
@@ -13,6 +14,34 @@ How to not ship something that reads as machine-made.
 - [Code tells](#code-tells)
 - [Copy tells](#copy-tells)
 - [The self-check](#the-self-check)
+
+## The commitment sheet
+
+Tell 0 and Tell 0b are the two failures this standard produces on its own, and both were written as **diagnostics** — things you notice afterwards. That is too late: a page that committed to nothing cannot be rescued with CSS, and a page that inherited the last project's skeleton has to be rebuilt, not adjusted.
+
+So they run **before** any code, as four written answers. Not a checklist to tick — four sentences that have to exist on paper, because each one is a decision that becomes expensive to change later.
+
+**1. What shape does this subject want?**
+
+One sentence naming the page's structure as a *thing*, not as a list of sections. A kiln descends. A ledger rules. A deck deals. A tube runs as one line. An archive indexes. A route travels.
+
+If the honest answer is "hero, then features, then contact", there is no shape yet — that is a container waiting for content. Go back to the subject and ask what it *does*, because the verb is usually the structure.
+
+**2. What is the one loud thing, and what pays for it?**
+
+Name the single element or moment that is genuinely large, dense, saturated, fast, or strange — and name what goes quiet to afford it. Both halves are required. "The type is big" is not an answer unless something else got smaller.
+
+If you cannot name it before building, you will not discover it during. Flatness is decided at this step, not at the styling step.
+
+**3. Section order, diffed against the last project.**
+
+Write this page's sections as a list. Put the previous project's list beside it. If they match, or match with renamed items, stop and return to question 1 — you have the house template, not a design.
+
+**4. Typeface, checked against the ledger.**
+
+Name the faces and confirm neither appeared on the previous project. The ledger lives in `typography.md`; add to it as you go.
+
+Four answers, ten minutes, before the first line of markup. They are cheap now and they are a rebuild later.
 
 ## The root cause
 

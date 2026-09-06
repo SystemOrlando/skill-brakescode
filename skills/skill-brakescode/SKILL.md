@@ -96,6 +96,7 @@ These are short because they're absolute. The reasoning is in the reference file
 - **Body text hits 4.5:1.** Warmth is not an excuse for low contrast — `#111214` on `#F4F2ED` measures **16.9:1**. Softness and contrast are not in tension.
 - **Number things.** `01 / 02 / 03`, `PIECE 1`, `/08`. Sequence makes a page read as curated rather than dumped.
 - **No spinner. Ever.** If it must load, the loading state says something true about what's loading.
+- **Answer the commitment sheet before writing markup.** Four sentences: the subject's shape, the one loud thing and what pays for it, the section order diffed against the last project, the typefaces checked against the ledger. → `references/anti-slop.md`
 - **Never ship the same skeleton twice.** The laws are invariant; the structure, the palette register, the typeface and the section order come from the subject and change every project. Diff the section order against the last thing shipped — if it matches, start again. → Tell 0b in `references/anti-slop.md`
 - **A typeface used on the previous project is off the table for this one**, however well it worked. Keep a ledger.
 - **An abstract rotating object is never the answer.** The slowly turning glassy blob over a particle field is the most legible generated page there is. Depth is earned by three cases only — the product *is* a physical object, the mechanism *is* spatial, or depth carries the hierarchy. → `references/dimension.md`
@@ -129,7 +130,7 @@ brakescode decides **what kind of thing this is**. The specialist skills decide 
 The short version of the running order, with the full table and the roster in `references/orchestration.md`:
 
 1. **Direction** — this SKILL.md's criterion, then `impeccable` for a new surface (or `redesign-existing-projects` when something must be preserved).
-2. **Anti-slop gate** — `references/anti-slop.md` against the *plan*, before any UI exists.
+2. **Anti-slop gate** — the **commitment sheet** at the top of `references/anti-slop.md`, answered in writing before any UI exists: what shape the subject wants, what the one loud thing is and what pays for it, the section order diffed against the last project, and the typefaces checked against the ledger. Flatness and templating are decided here, not at the styling step.
 3. **Visual system** — `color.md` and `typography.md` here, plus `impeccable`'s `craft-floor.md` for the mechanics this standard doesn't cover.
 4. **Components** — `pick-ui-library`, `magic-ui`, `ask-sonner`, `sileo-react-toasts`. Library components ship **modified**, never stock.
 5. **Motion** — `motion.md` sets the timing and the one-moment rule; `animate`, `animate-expo`, `apple-design`, or the `framer-motion-*` set does the building. For anything with a z-axis — 3D, parallax, WebGL, ambient drift — read `dimension.md` first: it decides whether the thing should exist in space at all before anyone picks a library.

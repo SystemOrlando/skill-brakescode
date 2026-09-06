@@ -12,7 +12,9 @@ Depth, 3D and ambitious motion. `motion.md` governs timing and the single signat
 - [WebGL](#webgl)
 - [Worked example: the second face](#worked-example-the-second-face)
 - [The measurement trap](#the-measurement-trap)
+- [Geometry bugs that read as broken](#geometry-bugs-that-read-as-broken)
 - [Finishing: form and edge](#finishing-form-and-edge)
+- [Finishing: realism beyond the render](#finishing-realism-beyond-the-render)
 - [Finishing: light](#finishing-light)
 - [Finishing: material](#finishing-material)
 - [Finishing: seating the object in the page](#finishing-seating-the-object-in-the-page)
@@ -178,6 +180,52 @@ These are cheap. A 420 × 32 tube is ~27k triangles, which is nothing for a sing
 
 **Anti-aliasing is a silhouette problem.** Aliasing on an interior gradient is invisible; on an outline against a contrasting ground it is the first thing seen. Keep MSAA on, and if the pixel ratio is capped for performance — as it should be — the silhouette is where that cap will show first, so check it there.
 
+## Geometry bugs that read as broken
+
+These are not subtleties. Each one makes a scene look unfinished in a way a viewer notices immediately without being able to name, and each has a mechanical cause and a mechanical fix.
+
+**Z-fighting.** Two surfaces at the same depth flicker and stripe as the camera moves, because the depth buffer cannot decide which is in front. It is the single most damning artifact in web 3D — nothing else says "broken" so fast.
+
+Three causes, in order of how often they are the real one:
+
+1. **The near plane is too close.** Depth precision is distributed logarithmically, so `near: 0.001` throws away almost all of it. Set `near` to the closest the camera will ever legitimately get — `0.1` or higher — and `far` to the furthest, and keep the ratio under about 10,000:1.
+2. **Two objects genuinely occupy the same plane** — a decal on a wall, a base on a floor. Offset them by a real distance (0.01–0.05 world units) or use `polygonOffset`.
+3. **Coincident faces inside one model** — a duplicated surface nobody noticed. Delete one.
+
+**Interpenetration.** An object passing through another reads as broken instantly, and it is the commonest bug in generated 3D because objects get positioned by eye at `y = 0` without checking their own bounding box. A vessel whose base is at `y = 0` but whose geometry origin is at its centre sinks halfway into the floor.
+
+Seat objects by measurement, never by eye:
+
+```js
+obj.geometry.computeBoundingBox();
+const min = obj.geometry.boundingBox.min.y;
+obj.position.y = -min;              // la base toca exactamente el suelo
+```
+
+The same check applies to anything that should *touch*: a shadow-catcher plane, a stand, a wall. Touching and intersecting look completely different, and the difference is one line of arithmetic.
+
+**Floating.** The opposite failure, and subtler: the object sits a hair above its surface with no contact shadow, and reads as pasted on. Covered under shadow below — but the geometric half is that "close to the floor" is not "on the floor."
+
+**Shadow acne and peter-panning.** Self-shadowing stripes across a lit surface (acne) come from too little shadow bias; a shadow visibly detached from the object that casts it (peter-panning) comes from too much. Tune `bias` between about `-0.0005` and `-0.002`, and prefer **tightening the shadow camera frustum** around the subject to raising bias — a tight frustum needs almost no bias at all.
+
+**Transparent sorting.** Transparent surfaces are drawn back-to-front by object centre, so two overlapping transparent objects, or one transparent object with concave geometry, will draw in the wrong order and show through themselves. Mitigations, in order: set `depthWrite: false` on soft additive things like smoke and glow; avoid stacking transparent volumes; and where a transparent object must look solid, give it a separate opaque inner shell rather than relying on the sort.
+
+**Normals inside out.** A face whose winding is reversed lights as though it were facing away and reads as a hole. Check with `side: THREE.DoubleSide` temporarily: if the hole fills in, the winding is the problem, and the fix is in the geometry, not in shipping DoubleSide.
+
+## Finishing: realism beyond the render
+
+Light, material, shadow and form make an object *correct*. These make it **believable**, and they are what separate a technically clean render from one that could be a photograph.
+
+**Give it a scale cue.** An object alone in a void has no size, and the eye defaults to reading it as a toy or a monument at random. Real photographs always carry scale — a hand, a coin, a table edge, a stated dimension beside the frame, a texture whose grain size is known. Without one, no amount of material work makes an object feel real, because "real" includes "real-sized."
+
+**Break the symmetry.** Perfect bilateral symmetry, perfectly even repetition and perfectly regular spacing are all things manufacturing tries and fails to achieve. A hand-made object is *visibly* not symmetrical; a machined one is symmetrical to a tolerance that still shows at close range. Introduce a small, deterministic variance — a degree of rotation, a hair of offset, a slightly uneven repeat — derived from the object's own data so it is stable across reloads rather than random per frame.
+
+**Put the wear where hands go.** Real objects are polished where they are held and dull where they are not, dirtier in recesses and cleaner on high points. A uniform surface is the giveaway; a roughness map that follows *use* rather than pattern is what sells it. This is ambient occlusion's argument from the other side: light gets into high points and not into crevices, and so do cloths.
+
+**Obey gravity.** Weight has to be visible: the object sits with its mass low, a soft thing deforms where it rests, a hanging thing hangs from a real point. An object floating at its own centre of volume looks weightless whatever its material says.
+
+**Do not fake the camera.** Depth of field, chromatic aberration, lens flare and heavy bloom are the postprocessing rut, and they simulate a camera that is not there. The house position: an object should be believable **because the object is right**, not because a lens effect is hiding that it is not. Bloom is the one occasional exception, and only where something is genuinely emitting.
+
 ## Finishing: light
 
 **Nothing separates a render that looks made from one that looks generated more than the lighting**, and the generated one is always lit from everywhere. Ambient-only light — a uniform environment with no dominant source — removes every gradient across a surface, and without gradients there is no form. The object reads as a flat sticker of itself.
@@ -269,6 +317,8 @@ Between those two — a gradient behind the object and a matched ground — plus
 Run it before calling a 3D element done. Each one is a difference you can see.
 
 0. **No mathematically sharp edges**, and enough radial segments that the silhouette carries no facets.
+0b. **Nothing intersects, nothing floats, nothing z-fights.** Bases seated by bounding box, near/far tight, shadow bias tuned.
+0c. **There is a scale cue**, and the object is not perfectly symmetrical.
 1. **One sun.** The 3D key and the page's CSS shadows fall the same way.
 2. **Key-to-fill is deliberate**, and not 1:1.
 3. **Key and fill have opposite temperatures.**
