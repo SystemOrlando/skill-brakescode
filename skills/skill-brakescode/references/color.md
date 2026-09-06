@@ -194,3 +194,33 @@ Semantic names, not literal ones — `--paper`, not `--beige-100`. When the pale
 Define the full light palette on bare `:root`, then override only what changes for dark. Never let a color's only definition live inside a media query or a `[data-theme]` block — that's how a page ends up transparent or unstyled in the state you didn't test.
 
 **Hairline rules matter more than they look.** `--line` at 14% ink is the editorial device that makes data tables, indices and section dividers read as considered. Every reference site uses fine rules heavily; none uses heavy borders or shadows. If you're reaching for a `box-shadow` to separate two things, try a 1px rule first.
+
+---
+
+## The one measured exception to the warm-ground law
+
+Cartier and Toteme both mount on `#FFFFFF`. That is not a lapse and it is not
+permission — it is a different job for the ground.
+
+**When photography covers the page, the ground stops being a field and becomes a
+mount.** A warm ground is a colour decision that reads beautifully behind type;
+behind an art-directed photograph it is a cast, tinting every image on the page
+toward its hue. White is chosen there for the same reason a gallery mat is
+white: so the work is the only colour in the frame.
+
+So the law reads, precisely:
+
+- **Ground:** warm, always — **unless** the page is in the mat register
+  (`luxury-restraint.md`), where imagery outweighs text by more than 2:1 and
+  neutrality is the point. Outside that register, `#FFF` remains banned.
+- **Ink:** off-black, always, with no exception in either register. The measured
+  values are `#1D1C1C` (Cartier) and `#090909` (Toteme) — both deliberately
+  short of `#000`, on sites that had every excuse to reach for it.
+- **Contrast is untouched.** `#1D1C1C` on white measures **17.0:1**;
+  `#090909` measures **19.9:1**. Restraint does not mean grey-on-white, and
+  11px grey body text is this register's most common counterfeit.
+
+**The accent budget collapses here.** Cartier's red (`#E60000`, `#D50032`)
+appears **five times on the whole homepage**. Toteme has no accent at all. If a
+palette in this register runs to three tones plus an accent used per-section,
+it is not in this register.

@@ -282,3 +282,45 @@ Body under 1.5 is the more common failure and the more damaging one, because it 
 Measure: **60–75 characters** for body. Iventions holds its body copy to roughly this and it's why a page that long stays readable.
 
 One more, and it matters more than the numbers: **set display type in as few lines as the breakpoint allows, and control the breaks yourself.** Iventions ships three separate markup copies of its headline for different breakpoints rather than letting one string reflow arbitrarily. A headline that wraps where the browser decides is a headline nobody art-directed.
+
+---
+
+## The mat register's type system
+
+The ladders above assume a page with display type. The mat register
+(`luxury-restraint.md`) has none, and its type system is a different shape.
+Measured, September 2026:
+
+| | Cartier | Toteme |
+|---|---|---|
+| Largest text **on the entire homepage** | 32px | 20px |
+| Dominant run | 12px / 400 / uppercase | 11.2px / 400 & 700 |
+| Tracking | +0.5px at 12px → +0.4px at 30px | `normal` at every size |
+| Leading | flat 1.5 (18/12, 24/16, 33/22, 45/30) | 1.375 at 11.2px, 1.5 at 14–16px |
+| Families | 2 (second at ~1% of runs) | 1 |
+
+Three consequences, and they only hold inside that register:
+
+**The ceiling replaces the scale.** There is no 96px headline to tune, so the
+inverse tracking and inverse leading ladders have nothing to act on at the top.
+Set one leading ratio between 1.375 and 1.5 and hold it everywhere. Hierarchy
+comes from image scale and position instead.
+
+**A well-drawn face may keep its own metrics.** Toteme ships `normal` tracking
+at every size and does not suffer, because a commissioned face is spaced by the
+person who drew it. The ban is on *unconsidered* tracking. Uppercase and
+micro-labels still get opened deliberately — Cartier's +0.5px at 12px is
+0.042em, right on the ladder — but sentence-case body in a good face is a
+legitimate place to leave it alone and say so.
+
+**One family is the target, two the ceiling.** Both houses commissioned a face
+and named it after themselves or their craft (Brilliant Cut, Fancy Cut, Toteme
+Sans). When commissioning is not on the table, pick one restrained face with a
+real weight range rather than pairing two adequate ones.
+
+### Ledger additions
+
+- **Spectral** — display and reading, `escape` (watchmaker, Sept 2026).
+- **Martian Mono** — figures, beats and measurements, `escape`. A mono earned
+  its place there because horology *is* numbers that must align in a column;
+  that is the bar, not a technical costume.

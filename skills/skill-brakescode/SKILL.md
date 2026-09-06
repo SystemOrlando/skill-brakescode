@@ -1,6 +1,6 @@
 ---
 name: skill-brakescode
-description: brakescode's house standard for web design and development, and the conductor that decides which other design skills to bring in and in what order. Carries the design criterion (one idea, carried into the parts nobody designs), a measured typographic tracking ladder, the warm-ground/cool-ink color law, a two-tier motion system, fifteen signature interaction patterns, an anti-slop pass that catches work reading as machine-made — generic alternating layouts, default framework palettes, unmodified library components, transition-all, corporate copy, and flatness from restraint that was never spent — plus the Next.js build and deploy discipline. Use this whenever building, designing, redesigning, reviewing or polishing any web interface — landing page, portfolio, product UI, marketing site, dashboard — for brakescode or for Orlando, and whenever starting a new web project from scratch. Reach for it even when the request sounds purely technical ("build the hero", "add a pricing section", "make this page"), because the house standard governs how the thing looks, moves and reads, not merely that it works. Use it too when work feels flat, generic, templated or AI-made and needs a point of view, when picking type, tracking, color, spacing, layout, easing, loaders, empty states or microcopy, and when deciding whether impeccable, animate, apple-design, framer-motion or the other design skills should be running on this task. Use it for anything with a z-axis too — 3D objects, figures, scenes, depth, parallax, WebGL, Three.js, lighting, materials and shadows — where it runs a dedicated seven-step lane that decides whether the thing should exist in space at all, picks the cheapest technique that works, and pulls in every relevant skill in order.
+description: brakescode's house standard for web design and development, and the conductor that decides which other design skills to bring in and in what order. Carries the design criterion (one idea, carried into the parts nobody designs), two measured registers — the object register for pages carried by an idea or a mechanism, and the mat register for luxury and editorial work carried by real photography (Cartier, Toteme, Aesop), with the precondition that gates it — a measured typographic tracking ladder, the warm-ground/cool-ink color law, a two-tier motion system, fifteen signature interaction patterns, an anti-slop pass that catches work reading as machine-made — generic alternating layouts, default framework palettes, unmodified library components, transition-all, corporate copy, and flatness from restraint that was never spent — plus the Next.js build and deploy discipline. Use this whenever building, designing, redesigning, reviewing or polishing any web interface — landing page, portfolio, product UI, marketing site, dashboard — for brakescode or for Orlando, and whenever starting a new web project from scratch. Reach for it even when the request sounds purely technical ("build the hero", "add a pricing section", "make this page"), because the house standard governs how the thing looks, moves and reads, not merely that it works. Use it too when work feels flat, generic, templated or AI-made and needs a point of view, when picking type, tracking, color, spacing, layout, easing, loaders, empty states or microcopy, and when deciding whether impeccable, animate, apple-design, framer-motion or the other design skills should be running on this task. Use it for anything with a z-axis too — 3D objects, figures, scenes, depth, parallax, WebGL, Three.js, lighting, materials and shadows — where it runs a dedicated seven-step lane that decides whether the thing should exist in space at all, picks the cheapest technique that works, and pulls in every relevant skill in order.
 ---
 
 # brakescode
@@ -29,9 +29,18 @@ Four tests apply this criterion. Run them before shipping anything.
 
 **The locked-out test.** Can a person on a slow connection, with reduced motion on, using a keyboard, get to the content? *Minh Pham's* portfolio failed this in testing — canvas plus three videos behind a blocking loader, stalled at 20% across two full attempts, and the site was never seen. Ambition that locks the user out is not ambition. It's a broken site with good taste.
 
-## The house tilt
+## The two registers
 
-The criterion above is neutral about *where* the loud moment sits on the scale from restrained to vernacular. The house is not. This section records the calibration, and it is a stated preference rather than something derived from the casebook — worth knowing, because the casebook sites sit at the restrained end and this house sits well past them.
+The criterion above is neutral about *where* the loud moment sits on the scale from restrained to vernacular. The house is not — but it runs **two registers**, and the first job on any brief is to say out loud which one this is. Building in the wrong one is not a matter of taste going astray; it is the most expensive mistake available, because every later decision inherits it.
+
+**Decide by asking what carries the page.**
+
+| The page is carried by… | Register |
+|---|---|
+| An idea, a mechanism, an argument, a catalogue | **The object** — below, and the default |
+| Photography or film that *already exists* | **The mat** — `references/luxury-restraint.md` |
+
+### The object register — the default
 
 Given two executions that both pass the criterion, **the house prefers the one that is an object over the one that is a document.**
 
@@ -46,11 +55,21 @@ Concretely, tested head to head on the same content:
 | **Vernacular** sources: folk printing, packaging, signage, games, market ephemera | Editorial sources: publications, studio identities, archival documents |
 | One color per item, changing the world as you move through it | One palette holding still across the page |
 
-The monochrome-and-hairlines register is not banned — it is correct for a genuinely documentary subject, and `references/casebook.md` shows it done superbly. But it is **not the default here**, and reaching for it because it is safe is how a page ends up passing every check while reading thin. When the brief leaves the register open, take the louder reading.
+Reaching for monochrome and hairlines because it is safe is how a page ends up passing every check while reading thin. When the brief leaves the register open and there are no photographs, take the louder reading.
 
 This does not loosen anything. Contrast floors, the tracking and line-height ladders, one loud moment per page, one focal point per section, reduced motion, and the anti-slop pass all still bind. Bold and undisciplined is not the target; **bold and exact** is.
 
 **The tilt's own failure mode: scaling everything.** Read "heavy display at large scale" and the obvious move is to enlarge the whole page — display *and* body *and* cards *and* padding. That produces no hierarchy at all, only zoom, and a page that feels held against the reader's face. The tilt applies to **the one loud element**. Everything else gets smaller and quieter to pay for it, because hierarchy is the *ratio* between them, not the size of either. Full treatment in `references/space-and-depth.md`.
+
+### The mat register
+
+The page behaves like a gallery mount: the work hangs on it, and the page's job is to not be seen. Measured off Cartier and Toteme, September 2026, with Aesop as documented corroboration — full evidence and laws in `references/luxury-restraint.md`.
+
+What it actually looks like, in numbers rather than adjectives: **the largest text anywhere on Cartier's homepage is 32px, and on Toteme's it is 20px.** Neither has display type at all. One family. Ground white, ink off-black (`#1D1C1C`, `#090909`). Cartier's red accent appears **five times on the whole page**. Toteme's imagery occupies **3.1× the area of its text**.
+
+**Its precondition is absolute and it is where this register goes wrong: you must actually have the photography.** The mat works because something is hanging on it. Without real art direction, what remains is 11px grey text on white with a lot of air — the thin, template-shaped page this standard exists to prevent, wearing a nicer coat. If the shoot does not exist, **this register is unavailable**; build in the object register instead.
+
+**Never blend the two.** 3.1:1 photography *and* a 96px condensed headline *and* saturated colour fields is not the best of both — it is a page with no decision in it. Name the register in the commitment sheet and hold it to the footer.
 
 ## Dimension
 
@@ -84,10 +103,10 @@ These follow from the criterion. When a specific rule below and the criterion di
 
 These are short because they're absolute. The reasoning is in the reference files.
 
-- **Never `#FFF`, never `#000`.** Warm grounds, cool inks. Not one reference site uses pure white or pure black. → `references/color.md`
-- **Tracking is inversely proportional to size.** Large type tightens, micro type opens. Never ship default tracking on display or on labels. → `references/typography.md`
-- **Two typefaces maximum**, and **never the scaffold's.** Geist, Inter as display, and the system stack are what arrive when nobody chose — shipping them is indistinguishable from not deciding. Pick the face from the subject's own typographic tradition. → `references/typography.md`
-- **Line height is inverse to size.** Display locks down to 0.88–1.0; body opens to 1.5–1.65. Browser defaults are wrong at both ends and visibly break large headlines.
+- **Never `#000`, and never `#FFF` except on the mat.** Warm grounds, cool inks. The one measured exception is the mat register, where photography covers the page and a tinted ground would cast its tint onto every image — Cartier and Toteme both mount on `#FFFFFF`. Both still refuse pure black: `#1D1C1C` and `#090909`. Outside that register the rule is absolute. → `references/color.md`
+- **Tracking is inversely proportional to size.** Large type tightens, micro type opens — Cartier measures +0.5px at 12px falling to +0.4px at 30px. What is banned is *unconsidered* tracking, not zero tracking: a well-drawn face set in sentence case may keep its own metrics, and Toteme ships `normal` at every size without loss. On uppercase, on micro-labels and on display, tracking is always a decision you make. → `references/typography.md`
+- **Two typefaces maximum — one on the mat**, and **never the scaffold's.** Geist, Inter as display, and the system stack are what arrive when nobody chose — shipping them is indistinguishable from not deciding. Pick the face from the subject's own typographic tradition. → `references/typography.md`
+- **Line height is inverse to size** — wherever there is display type. Display locks down to 0.88–1.0; body opens to 1.5–1.65. Browser defaults are wrong at both ends and visibly break large headlines. The mat register has no display type by construction, so it runs one flat ratio (1.375–1.5) at every size instead; Cartier holds 1.5 at 12px *and* at 30px.
 - **Space is hierarchical, never uniform.** The gap between two things is inversely proportional to how related they are, which puts roughly 20:1 between a page's largest and smallest gaps. `p-6` on everything is the absence of a decision. → `references/space-and-depth.md`
 - **Borders and shadows are derived, not picked.** On dark, the border is the text color at 0.05–0.10 opacity. On light, the shadow is tinted toward the ground's hue, layered, and offset — never `rgba(0,0,0,0.1)`. Declare elevation once: a rule, a shadow, or a background step, not two of them.
 - **Theme what the browser draws.** `::selection`, `caret-color`, `:focus-visible`, the scrollbar, and tabular numerals ship with defaults that belong to no design system. Theming them is the cheapest signal that a page was built rather than assembled, and the one most reliably skipped.
@@ -117,6 +136,7 @@ Start with the criterion and the four tests — those do most of the work. Pull 
 | `references/motion.md` | Any animation, transition, easing, loader, or scroll behavior |
 | `references/dimension.md` | 3D, depth, parallax, WebGL, ambient motion |
 | `references/patterns.md` | You want a specific signature interaction, with implementation |
+| `references/luxury-restraint.md` | **The brief comes with real photography** — the mat register's laws, and the precondition that gates it |
 | `references/casebook.md` | You want the exact measured evidence — fonts, hexes, timings, per site |
 
 The first two are not optional on real work. `orchestration.md` decides which other skills to bring in and in what order; `anti-slop.md` runs twice — against the plan, where the expensive failures are cheap to fix, and against the finished page.

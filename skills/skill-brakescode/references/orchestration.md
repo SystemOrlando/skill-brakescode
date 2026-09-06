@@ -26,6 +26,8 @@ Run these in order. Skip a phase only when the task genuinely has none of it.
 
 Load: **this SKILL.md** (the criterion and its four tests), then **`impeccable`** for a new surface or a replacement world.
 
+**Settle the register first, before the seed rolls.** Object or mat (SKILL.md, "The two registers"); the mat additionally requires naming the photography that already exists, and is unavailable without it. Load `luxury-restraint.md` only if the answer is mat. This comes first because the register decides which values every later phase is working toward — `color.md`'s ground, `typography.md`'s ceiling and leading, `motion.md`'s durations all fork on it, and discovering the fork in phase 3 means redoing phase 1.
+
 `impeccable` owns the machinery: the concept seed roll, the challenger weighing, the direction contract, the surface brief. brakescode supplies the character the roll has to survive, and its pinned constraints (warm ground, cool ink, ≤2 faces, one loud moment) beat the roll, always. The seed still binds through topology, controls, state vocabulary and ritual — translate materials rather than discarding the assignment, and name the translation.
 
 For an existing site being reworked rather than replaced, load **`redesign-existing-projects`** instead: it audits the incumbent before touching it, which is the right first move when there is something to preserve.

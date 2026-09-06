@@ -231,3 +231,63 @@ What multiple independent studios arrived at separately — the strongest signal
 9. **The loading state is designed** on four of five — and the fifth is the one that failed.
 10. **Two sites independently shipped a density toggle.**
 11. **Two or fewer typefaces** on every site that isn't carrying commerce-plugin debt.
+
+---
+
+# Casebook II — the mat register
+
+Added September 2026, after the record above proved unable to describe a luxury
+house. The five sites above are all in the **object** register; these are in the
+**mat**. Measured live at 1614×914 unless a row says otherwise. Laws derived
+from them are in `luxury-restraint.md`.
+
+## 6. Cartier — cartier.com  *(measured)*
+
+- **Typefaces:** Brilliant Cut (primary), Fancy Cut (secondary, 43 runs against
+  thousands). Both proprietary. Named after diamond cuts — identity equals
+  mechanism, in the house's own vocabulary.
+- **Largest text on the homepage: 32px.** No display type exists on the page.
+- **Dominant voice:** 12px / 400 / uppercase / `letter-spacing: 0.5px`, 382 runs.
+  The second most common is the same at 12px with `line-height: 19.8px`, 205 runs.
+- **Tracking:** 0.5px at 12px (0.042em) and at 16px (0.031em); 0.4px at 22px
+  (0.018em) and at 30px (0.013em). The inverse law, in a luxury house's numbers.
+- **Line height: a flat 1.5** — 18/12, 24/16, 33/22, 45/30. Not an inverse ladder.
+- **Ink `#1D1C1C`** (3136 runs). Pure black appears 107 times, in borders and
+  overlays, never as text. White `#FFFFFF` is the ground.
+- **Accent `#E60000` and `#D50032`: five uses on the entire homepage.**
+- **Motion:** 0.5s on 376 elements, 0.2s on 281, 0.3s on 157. The commonest
+  duration is *above* the 300ms application ceiling. `ease-out` dominant at 588.
+- **Imagery** covers essentially the whole scroll area.
+
+## 7. Toteme — toteme.com  *(measured)*
+
+- **One typeface: Toteme Sans.** Proprietary. Weights 300, 400, 700.
+- **Largest text on the whole store: 20px** — the words "Fall Winter 26."
+- **Dominant voice:** 11.2px at weights 400 and 700, 1040 runs each, line-height
+  15.4px (**1.375**).
+- **Tracking: `normal` at every size.** A counter-example worth keeping: a
+  well-drawn proprietary face, left alone, in sentence case.
+- **Ink `#090909`** on `#FFFFFF`. No accent colour at all.
+- **Motion:** 0.3s on 175 elements; `ease` dominant.
+- **Image area ÷ text area = 3.1 : 1**, computed over the full 3320px scroll.
+
+## 8. Aesop — aesop.com  *(documented, not measured)*
+
+Behind bot protection; the site could not be read, and working around that is
+not something we do. Recorded from Fonts In Use: **Suisse Int'l** on the web,
+**Optima** (as Zapf Humanist) in the logo, Neue Helvetica on packaging. Treat as
+corroboration of the one-restrained-family pattern, never as a measurement.
+
+## Convergent findings — register II
+
+1. **The type ceiling is real and it is low.** 32px and 20px, two independent
+   houses. Neither has display type.
+2. **One family.** Both commissioned a face rather than picking one.
+3. **Pure white grounds** — the only measured exception to the warm-ground law,
+   and it holds only because photography covers the page.
+4. **Ink is off-black on both,** `#1D1C1C` and `#090909`. The black half of the
+   law survives the exception intact.
+5. **The accent budget is countable on one hand,** or is zero.
+6. **Motion runs slower than app motion** — 0.5s dominant on Cartier.
+7. **Imagery outweighs type by more than 3:1** where it could be measured.
+8. **Nothing bounces.** Holds across both registers, all eight sites.

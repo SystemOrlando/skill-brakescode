@@ -94,7 +94,37 @@ Las referencias se cargan solo cuando hacen falta:
 | `references/color.md` | Armar paleta, fondos, tintas, contraste |
 | `references/motion.md` | Cualquier animación, transición, easing, loader |
 | `references/patterns.md` | 15 patrones de interacción con implementación |
+| `references/luxury-restraint.md` | El brief trae fotografía real — el registro *mat* y la precondición que lo bloquea |
 | `references/casebook.md` | El registro medido, sitio por sitio |
+
+---
+
+## Los dos registros
+
+Desde la v1.18 el estándar corre **dos registros**, y lo primero que se decide en
+cualquier brief es cuál de los dos es. Construir en el equivocado es el error más
+caro que hay, porque todo lo que viene después lo hereda.
+
+| Lo que carga la página | Registro |
+|---|---|
+| Una idea, un mecanismo, un argumento, un catálogo | **Objeto** — el de siempre, y el que va por defecto |
+| Fotografía o vídeo **que ya existe** | **Mat** — `references/luxury-restraint.md` |
+
+El registro *mat* está medido sobre Cartier y Toteme (sept 2026), con Aesop como
+corroboración documentada. Lo que dicen los números: el texto más grande de toda
+la home de Cartier son **32px**, y el de Toteme **20px** — ninguna de las dos
+tiene tipografía de display. Una sola familia. Fondo blanco, tinta casi negra
+(`#1D1C1C`, `#090909`). El rojo de Cartier aparece **cinco veces en toda la
+home**. En Toteme la imagen ocupa **3,1× el área del texto**.
+
+**Su precondición no es negociable: tiene que existir la fotografía.** Sin ella
+lo que queda es texto gris de 11px sobre blanco con mucho aire — exactamente la
+página vacía con pinta de plantilla que este estándar existe para evitar. Si la
+sesión de fotos no existe, el registro *mat* no está disponible.
+
+Y no se mezclan: 3,1:1 de fotografía **más** un titular condensado de 96px **más**
+campos de color saturado no es lo mejor de los dos, es una página sin ninguna
+decisión dentro.
 
 ---
 

@@ -7,6 +7,8 @@ How to not ship something that reads as machine-made.
 - [The commitment sheet](#the-commitment-sheet)
 - [The root cause](#the-root-cause)
 - [Tell 0: restraint without a payload](#tell-0-restraint-without-a-payload)
+- [Tell 0b: the house style became a template](#tell-0b-the-house-style-became-a-template)
+- [Tell 0c: the mat without the work](#tell-0c-the-mat-without-the-work)
 - [Layout tells](#layout-tells)
 - [Color and CSS tells](#color-and-css-tells)
 - [Component tells](#component-tells)
@@ -19,7 +21,13 @@ How to not ship something that reads as machine-made.
 
 Tell 0 and Tell 0b are the two failures this standard produces on its own, and both were written as **diagnostics** — things you notice afterwards. That is too late: a page that committed to nothing cannot be rescued with CSS, and a page that inherited the last project's skeleton has to be rebuilt, not adjusted.
 
-So they run **before** any code, as four written answers. Not a checklist to tick — four sentences that have to exist on paper, because each one is a decision that becomes expensive to change later.
+So they run **before** any code, as five written answers. Not a checklist to tick — five sentences that have to exist on paper, because each one is a decision that becomes expensive to change later.
+
+**0. Which register, and what is hanging on the mat?**
+
+Name it: **object** or **mat** (SKILL.md, "The two registers"). If the answer is mat, the second half is not optional — name the photography or film that already exists. A shoot that has to be commissioned, a placeholder, a gradient, or a CSS shape standing in for a photograph all mean the answer is **object**.
+
+This question comes first because it is the only one whose wrong answer invalidates the other four. Choosing the mat with nothing to hang on it produces a page that passes every negative check and is empty — see Tell 0c.
 
 **1. What shape does this subject want?**
 
@@ -41,7 +49,7 @@ Write this page's sections as a list. Put the previous project's list beside it.
 
 Name the faces and confirm neither appeared on the previous project. The ledger lives in `typography.md`; add to it as you go.
 
-Four answers, ten minutes, before the first line of markup. They are cheap now and they are a rebuild later.
+Five answers, ten minutes, before the first line of markup. They are cheap now and they are a rebuild later.
 
 ## The root cause
 
@@ -84,6 +92,38 @@ Three tests, run against the last thing shipped rather than against a checklist:
 **The skeleton test.** Strip both pages to grey boxes and put them side by side. If a stranger could not tell which is which, the second one inherited the first one's composition rather than deriving its own.
 
 The fix is never to vary the surface. It is to go back to the subject and ask what shape *this* thing wants — a kiln descends, an archive indexes, a route travels, a menu is served in order, a catalogue is browsed. Those are different pages, and the difference should be visible from across the room with the text unreadable.
+
+## Tell 0c: the mat without the work
+
+The specific way the mat register fails, and the reason it is gated behind a
+precondition rather than offered as a style.
+
+The register is genuinely correct for Cartier and Toteme, and the measurements
+in `casebook.md` show why: on Toteme the imagery occupies **3.1× the area of the
+text**, and the largest type on the whole store is 20px. The restraint reads as
+confidence because the reader's eye has somewhere expensive to land.
+
+Take the same laws and remove the photography, and every one of them turns on
+you:
+
+| The law | With the work | Without it |
+|---|---|---|
+| Type capped near 20–32px | The images carry the hierarchy | Nothing carries it — the page has no scale at all |
+| One family, one weight range | The face recedes behind the picture | The face is all there is, and it is doing nothing |
+| Pure white ground | A neutral mount for the images | A blank browser window |
+| Accent used five times | Rationing against a rich page | Rationing against an empty one |
+| Vast whitespace | Space *around* something | Just space |
+| 0.5s transitions | Unhurried reveals of real images | A slow, empty page |
+
+**How to catch it.** Compute the ratio. Sum the on-screen area of every real
+image and video, sum the area of every text run, and divide. Below roughly
+**2:1**, the mat is showing and the register is wrong for this page. The fix is
+never to add more whitespace or refine the type — it is to change register.
+
+**The tell in one line:** if deleting every image from the page would leave it
+looking *substantially the same*, it was never in this register — it is Tell 0
+with a luxury vocabulary. Restraint that costs nothing is not restraint; it is
+an unspent budget, and the reader can tell.
 
 ## Layout tells
 

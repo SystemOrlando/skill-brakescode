@@ -228,3 +228,37 @@ Two related traps in the same family, both of which cost real time before being 
 - `will-change` immediately before a known animation, removed after. Leaving it on permanently costs memory and can make things slower.
 - Never animate more than a few dozen elements at once without checking a real frame profile.
 - Test on a mid-range phone with 4× CPU throttling, not on the machine you built it on.
+
+---
+
+## The 300ms ceiling is about frequency, not taste
+
+The ceiling above governs **controls** — things a person operates repeatedly,
+where any duration is a tax paid on every use. It is not a statement that fast
+is good and slow is bad.
+
+Measured on Cartier, September 2026: the commonest transition duration on the
+homepage is **0.5s**, on 376 elements, ahead of 0.2s (281) and 0.3s (157).
+Toteme runs 0.3s on 175 elements, with 0.6s in reserve. Both sit above the
+application ceiling, and both are right, because what is moving is an **image
+being revealed**, seen once, not a dropdown opened forty times a day.
+
+So the rule, stated properly:
+
+| What is moving | Duration | Why |
+|---|---|---|
+| A control the user operates repeatedly | 100–250ms | The cost is paid every time |
+| A panel, modal, drawer | 200–300ms | Occasional; comprehension needs the bridge |
+| **An image or section being revealed on scroll** | **300–600ms** | Seen once; the slowness *is* the register |
+| The signature moment | As long as it earns, never blocking | See above |
+
+Two things this does **not** license:
+
+1. **Carrying 0.5s back into UI.** A 500ms dropdown is sluggish whatever the
+   brand. The number belongs to the reveal, not to the component library.
+2. **Slowness without imagery.** An unhurried reveal of a text block is a slow
+   empty page. This tier presupposes the mat register's precondition — see
+   Tell 0c in `anti-slop.md`.
+
+`prefers-reduced-motion` binds here exactly as everywhere else, and a slow
+image-heavy page is the one most likely to fail it.
